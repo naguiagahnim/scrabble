@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Chevalet {
-	private List<Jeton> jetons = new ArrayList();
+	private List<Jeton> lettres = new ArrayList();
 	
-	public Chevalet(List<Jeton> jetons) {
-		this.jetons = jetons;
+	public Chevalet(List<Jeton> lettres) {
+		this.lettres = lettres;
+	}
+	
+	public void distribuer() {
+		
 	}
 }
