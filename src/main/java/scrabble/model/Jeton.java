@@ -1,4 +1,4 @@
-package scrabble.application;
+package scrabble.model;
 
 public enum Jeton {
 	A,
