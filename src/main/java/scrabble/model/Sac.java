@@ -3,7 +3,7 @@ package scrabble.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class sac {
+public class Sac {
 	private List<Jeton> jetonspioche = new ArrayList();
 
 	public List<Jeton> getJetonspioche() {
