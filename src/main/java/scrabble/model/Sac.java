@@ -5,9 +5,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class Sac {
-	static ArrayList<Jeton> jetonspioche = new ArrayList();
+	public static ArrayList<Jeton> jetonspioche = new ArrayList();
 
-	public ArrayList<Jeton> getJetonspioche() {
+	public static ArrayList<Jeton> getJetonspioche() {
 		return jetonspioche;
 	}
 
@@ -15,7 +15,7 @@ public class Sac {
 		this.jetonspioche = jetonspioche;
 	}
 	
-	public void melanger() {
+	public static void melanger() {
 		Collections.shuffle(jetonspioche);
 	}
 }
