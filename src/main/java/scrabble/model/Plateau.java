@@ -1,6 +1,7 @@
 package scrabble.model;
 
 public class Plateau {
+	//TODO A MODIFIER
 
     private static final int TAILLE = 15;
     private Case[][] cases;
