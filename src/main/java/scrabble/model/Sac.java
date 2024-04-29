@@ -1,20 +1,21 @@
 package scrabble.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Sac {
-	private List<Jeton> jetonspioche = new ArrayList();
+	static ArrayList<Jeton> jetonspioche = new ArrayList();
 
-	public List<Jeton> getJetonspioche() {
+	public ArrayList<Jeton> getJetonspioche() {
 		return jetonspioche;
 	}
 
-	public void setJetonspioche(List<Jeton> jetonspioche) {
+	public void setJetonspioche(ArrayList<Jeton> jetonspioche) {
 		this.jetonspioche = jetonspioche;
 	}
 	
 	public void melanger() {
-		
+		Collections.shuffle(jetonspioche);
 	}
 }
