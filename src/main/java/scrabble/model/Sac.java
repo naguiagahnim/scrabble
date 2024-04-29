@@ -2,7 +2,6 @@ package scrabble.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class Sac {
 	static ArrayList<Jeton> jetonspioche = new ArrayList();
