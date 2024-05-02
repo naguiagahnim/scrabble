@@ -48,8 +48,10 @@ public class ScrabbleJeuxEssais {
 		Sac.jetonspioche.add(Jeton.Y);
 		Sac.jetonspioche.add(Jeton.Z);
 		
+		System.out.println("Avant de mélanger");
 		System.out.println(Sac.getJetonspioche());
 		Sac.melanger();
+		System.out.println("Après mélanger");
 		System.out.println(Sac.getJetonspioche());
 	}
 }
