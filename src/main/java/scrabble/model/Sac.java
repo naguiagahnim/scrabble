@@ -12,7 +12,7 @@ public class Sac {
 	}
 	
 	public Jeton getJetonIndice(int indice) { 
-		return jetonspioche.get(indice);
+		return this.jetonspioche.get(indice);
 	}
 
 	public void setJetonspioche(ArrayList<Jeton> jetonspioche) {
