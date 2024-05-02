@@ -19,11 +19,11 @@ public class Chevalet {
 	
 	public void distribuer() {
 		int i=0;
-		while (Sac.jetonspioche.get(i) == null) {
-			i=i+1;
-		}
-		for (int j=i+7; i<j;i++) {
-			this.lettres.add(Sac.jetonspioche.get(i));
+		for (int j=0; j<7;i++) {
+			if (Sac.jetonspioche.get(i) != null) {
+				this.lettres.add(Sac.jetonspioche.get(i));
+				j=j+1;
+			}
 		}
 	
 	}
