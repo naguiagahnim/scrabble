@@ -1,16 +1,10 @@
 package scrabble.application;
 
-import java.util.ArrayList;
-
 import scrabble.model.Chevalet;
 import scrabble.model.Jeton;
 import scrabble.model.Sac;
 
-
-
 public class ScrabbleJeuxEssais {
-	
-	private static String SEP_LINE = "--------------------------------------------";
 
 	public static void main(String[] args) {
 		for (int i=0;i<15;i++)	{
@@ -55,8 +49,6 @@ public class ScrabbleJeuxEssais {
 		Sac.jetonspioche.add(Jeton.Y);
 		Sac.jetonspioche.add(Jeton.Z);
 		
-		System.out.println(SEP_LINE);
-		System.out.println("Pioche");
 		System.out.println("Avant de mélanger");
 		System.out.println(Sac.getJetonspioche());
 		Sac.melanger();
@@ -64,12 +56,13 @@ public class ScrabbleJeuxEssais {
 		System.out.println(Sac.getJetonspioche());
 		
 		
-		System.out.println(SEP_LINE);
-		System.out.println("Chevalet");
 		Chevalet chevalet1 = new Chevalet();
 		chevalet1.distribuer();
 		System.out.println(chevalet1.getLettres());
-		System.out.println(SEP_LINE);
+		System.out.println(Sac.getJetonspioche());
+		Chevalet chevalet2 = new Chevalet();
+		chevalet2.distribuer();
+		System.out.println(chevalet2.getLettres());
 	}
 	
 }
