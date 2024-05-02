@@ -10,10 +10,6 @@ public class Sac {
 	public static ArrayList<Jeton> getJetonspioche() {
 		return jetonspioche;
 	}
-	
-	public Jeton getJetonIndice(int indice) { 
-		return this.jetonspioche.get(indice);
-	}
 
 	public void setJetonspioche(ArrayList<Jeton> jetonspioche) {
 		this.jetonspioche = jetonspioche;
