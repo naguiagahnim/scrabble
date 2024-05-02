@@ -23,7 +23,16 @@ public class Chevalet {
 				j=j+1;
 			}
 		}
+	}
 	
+	public void echanger(Jeton jeton) {
+		for(Jeton el : lettres) {
+			if(el==jeton) {
+				lettres.remove(el);
+				Sac.melanger();
+				lettres.add(Sac.jetonspioche.get(0));
+			}
+		}
 	}
 
 }
