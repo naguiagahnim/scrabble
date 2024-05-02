@@ -56,9 +56,9 @@ public class ScrabbleJeuxEssais {
 		System.out.println(Sac.getJetonspioche());
 		
 		
-		Chevalet chevalet1 = new Chevalet(null);
+		Chevalet chevalet1 = new Chevalet();
 		chevalet1.distribuer();
-		chevalet1.getLettres();
+		System.out.println(chevalet1.getLettres());
 	}
 	
 }

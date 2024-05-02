@@ -9,20 +9,23 @@ public class Chevalet {
 	
 	
 	public List<Jeton> getLettres() {
-		return lettres;
+		return this.lettres;
 	}
+	
 
-	public Chevalet(List<Jeton> lettres) {
-		this.lettres = lettres;
+	public Chevalet() {
+		this.lettres = new ArrayList();
 	}
 	
 	public void distribuer() {
 		int i=0;
-		while (Sac.jetonspioche.get(i) != null) {
+		while (Sac.jetonspioche.get(i) == null) {
 			i=i+1;
 		}
 		for (int j=i+7; i<j;i++) {
 			this.lettres.add(Sac.jetonspioche.get(i));
 		}
+	
 	}
+
 }
