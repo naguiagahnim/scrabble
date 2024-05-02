@@ -53,5 +53,7 @@ public class ScrabbleJeuxEssais {
 		Sac.melanger();
 		System.out.println("Après mélanger");
 		System.out.println(Sac.getJetonspioche());
+		
 	}
+	
 }

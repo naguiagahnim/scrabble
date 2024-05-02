@@ -11,7 +11,7 @@ public class Sac {
 		return jetonspioche;
 	}
 	
-	public static Jeton getJetonIndice(int indice) { 
+	public Jeton getJetonIndice(int indice) { 
 		return jetonspioche.get(indice);
 	}
 

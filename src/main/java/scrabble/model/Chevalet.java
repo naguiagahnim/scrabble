@@ -22,7 +22,7 @@ public class Chevalet {
 			i=i+1;
 		}
 		for (int j=i+7; i<j;i++) {
-			System.out.println("Jeton");
+			this.lettres.add(Sac.jetonspioche.get(i));
 		}
 	}
 }
