@@ -1,5 +1,6 @@
 package scrabble.application;
 
+import scrabble.model.Chevalet;
 import scrabble.model.Jeton;
 import scrabble.model.Sac;
 
@@ -54,6 +55,10 @@ public class ScrabbleJeuxEssais {
 		System.out.println("Après mélanger");
 		System.out.println(Sac.getJetonspioche());
 		
+		
+		Chevalet chevalet1 = new Chevalet(null);
+		chevalet1.distribuer();
+		chevalet1.getLettres();
 	}
 	
 }
