@@ -5,32 +5,32 @@ import java.util.List;
 
 
 public class Chevalet {
-	private List<Jeton> lettres = new ArrayList();
+	private List<Jeton> jetons = new ArrayList();
 	
 	
 	public List<Jeton> getLettres() {
-		return this.lettres;
+		return this.jetons;
 	}
 	
 
 	public Chevalet() {
-		this.lettres = new ArrayList();
+		this.jetons = new ArrayList();
 	}
 	
 	public void distribuer() {
 		int i=0;
 		for (int j=0; j<7;j++) {
-				this.lettres.add(Sac.jetonspioche.get(i));
-				Sac.jetonspioche.remove(i);
+				this.jetons.add(Sac.jetons.get(i));
+				Sac.jetons.remove(i);
 			}
 		}
 	
 	public void echanger(Jeton jeton) {
-		for(Jeton el : lettres) {
+		for(Jeton el : jetons) {
 			if(el==jeton) {
-				lettres.remove(el);
+				jetons.remove(el);
 				Sac.melanger();
-				lettres.add(Sac.jetonspioche.get(0));
+				jetons.add(Sac.jetons.get(0));
 			}
 		}
 	}

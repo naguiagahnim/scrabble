@@ -4,17 +4,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Sac {
-	public static ArrayList<Jeton> jetonspioche = new ArrayList();
+	
+	public ArrayList<Jeton> jetons;
 
-	public static ArrayList<Jeton> getJetonspioche() {
-		return jetonspioche;
+	public Sac(ArrayList<Jeton> jetons) {
+		this.jetons = jetons;
+	}
+
+	public ArrayList<Jeton> getJetonspioche() {
+		return jetons;
 	}
 
 	public void setJetonspioche(ArrayList<Jeton> jetonspioche) {
-		this.jetonspioche = jetonspioche;
+		this.jetons = jetonspioche;
 	}
 	
 	public static void melanger() {
-		Collections.shuffle(jetonspioche);
+		Collections.shuffle(jetons);
 	}
 }
