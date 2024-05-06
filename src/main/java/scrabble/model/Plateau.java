@@ -1,8 +1,9 @@
 package scrabble.model;
 
-public class Plateau {
-	//TODO A MODIFIER
+import scrabble.exceptions.HorsPlateauException;
 
+public class Plateau {
+	
     private static final int TAILLE = 15;
     private Case[][] cases;
 
@@ -15,14 +16,19 @@ public class Plateau {
         }
     }
 
-    public Case getCase(int x, int y) {
-        if (x < 0 || x >= TAILLE || y < 0 || y >= TAILLE) {
-            throw new IllegalArgumentException("Coordonnées de la case invalides");
+    public Case getCase(int x, int y) throws HorsPlateauException {
+        try {
+            if (x < 0 || x >= TAILLE || y < 0 || y >= TAILLE) {
+                throw new HorsPlateauException("Indices de la case hors du plateau !");
+            }
+            return cases[x][y];
+        } catch (IndexOutOfBoundsException e) {
+            throw new HorsPlateauException("Les indices fournis sont trop grands ou négatifs !");
         }
-        return cases[x][y];
     }
 
-    public boolean placerJeton(Jeton jeton, int x, int y) {
+
+    public boolean placerJeton(Jeton jeton, int x, int y) throws HorsPlateauException {
         Case casee = getCase(x, y);
         if (!casee.isOccupe()) {
             casee.setOccupe(true);
@@ -32,7 +38,7 @@ public class Plateau {
         return false;
     }
 
-    public void retirerJeton(int x, int y) {
+    public void retirerJeton(int x, int y) throws HorsPlateauException {
         Case casee = getCase(x, y);
         if (casee.isOccupe()) {
             casee.setOccupe(false);
