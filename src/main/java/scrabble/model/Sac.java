@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class Sac {
 	
-	public ArrayList<Jeton> jetons;
+	private ArrayList<Jeton> jetons;
 
 	public Sac() {
 		this.jetons = new ArrayList<Jeton>() ;
