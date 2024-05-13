@@ -9,46 +9,46 @@ public class ScrabbleJeuxEssais {
 	public static void main(String[] args) {
 		Sac sac = new Sac();
 		for (int i=0;i<15;i++)	{
-			sac.jetons.add(Jeton.E);
+			sac.ajout1Jeton(Jeton.E);
 		}
 		for (int i=0;i<9;i++)	{
-			sac.jetons.add(Jeton.A);
+			sac.ajout1Jeton(Jeton.A);
 		}
 		for (int i=0;i<8;i++)	{
-			sac.jetons.add(Jeton.I);
+			sac.ajout1Jeton(Jeton.I);
 		}
 		for (int i=0;i<6;i++)	{
-			sac.jetons.add(Jeton.N);
-			sac.jetons.add(Jeton.O);
-			sac.jetons.add(Jeton.R);
-			sac.jetons.add(Jeton.S);
-			sac.jetons.add(Jeton.T);
-			sac.jetons.add(Jeton.U);
+			sac.ajout1Jeton(Jeton.N);
+			sac.ajout1Jeton(Jeton.O);
+			sac.ajout1Jeton(Jeton.R);
+			sac.ajout1Jeton(Jeton.S);
+			sac.ajout1Jeton(Jeton.T);
+			sac.ajout1Jeton(Jeton.U);
 		}
 		for (int i=0;i<5;i++)	{
-			sac.jetons.add(Jeton.L);
+			sac.ajout1Jeton(Jeton.L);
 		}
 		for (int i=0;i<3;i++)	{
-			sac.jetons.add(Jeton.D);
-			sac.jetons.add(Jeton.M);
+			sac.ajout1Jeton(Jeton.D);
+			sac.ajout1Jeton(Jeton.M);
 		}
 		for (int i=0;i<2;i++)	{
-			sac.jetons.add(Jeton.G);
-			sac.jetons.add(Jeton.B);
-			sac.jetons.add(Jeton.C);
-			sac.jetons.add(Jeton.P);
-			sac.jetons.add(Jeton.F);
-			sac.jetons.add(Jeton.H);
-			sac.jetons.add(Jeton.V);
-			sac.jetons.add(Jeton.JOKER);
+			sac.ajout1Jeton(Jeton.G);
+			sac.ajout1Jeton(Jeton.B);
+			sac.ajout1Jeton(Jeton.C);
+			sac.ajout1Jeton(Jeton.P);
+			sac.ajout1Jeton(Jeton.F);
+			sac.ajout1Jeton(Jeton.H);
+			sac.ajout1Jeton(Jeton.V);
+			sac.ajout1Jeton(Jeton.JOKER);
 		}
-		sac.jetons.add(Jeton.J);
-		sac.jetons.add(Jeton.Q);
-		sac.jetons.add(Jeton.K);
-		sac.jetons.add(Jeton.W);
-		sac.jetons.add(Jeton.X);
-		sac.jetons.add(Jeton.Y);
-		sac.jetons.add(Jeton.Z);
+		sac.ajout1Jeton(Jeton.J);
+		sac.ajout1Jeton(Jeton.Q);
+		sac.ajout1Jeton(Jeton.K);
+		sac.ajout1Jeton(Jeton.W);
+		sac.ajout1Jeton(Jeton.X);
+		sac.ajout1Jeton(Jeton.Y);
+		sac.ajout1Jeton(Jeton.Z);
 		
 		System.out.println("Avant de mélanger");
 		System.out.println(sac.getJetons());
