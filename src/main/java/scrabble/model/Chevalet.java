@@ -5,7 +5,7 @@ import java.util.List;
 
 
 public class Chevalet {
-	private List<Jeton> jetons = new ArrayList();
+	public List<Jeton> jetons = new ArrayList();
 	
 	
 	public List<Jeton> getLettres() {

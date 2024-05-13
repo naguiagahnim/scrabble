@@ -19,7 +19,7 @@ public class Sac {
 		this.jetons = jetonspioche;
 	}
 	
-	public static void melanger() {
+	public void melanger() {
 		Collections.shuffle(jetons);
 	}
 }
