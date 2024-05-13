@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Chevalet {
 	private List<Jeton> jetons = new ArrayList();
+	protected Sac sac;
 	
 	
 	public List<Jeton> getLettres() {
@@ -13,15 +14,16 @@ public class Chevalet {
 	}
 	
 
-	public Chevalet() {
+	public Chevalet(Sac sac) {
 		this.jetons = new ArrayList();
+		this.sac = sac;
 	}
 	
 	public void distribuer() {
 		int i=0;
 		for (int j=0; j<7;j++) {
-				this.jetons.add(Sac.jetons.get(i));
-				Sac.jetons.remove(i);
+				this.jetons.add(this.sac.jetons.get(i));
+				this.sac.jetons.remove(i);
 			}
 		}
 	
@@ -29,8 +31,8 @@ public class Chevalet {
 		for(Jeton el : jetons) {
 			if(el==jeton) {
 				jetons.remove(el);
-				Sac.melanger();
-				jetons.add(Sac.jetons.get(0));
+				sac.melanger();
+				jetons.add(this.sac.jetons.get(0));
 			}
 		}
 	}

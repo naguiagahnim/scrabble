@@ -57,11 +57,11 @@ public class ScrabbleJeuxEssais {
 		System.out.println(sac.getJetons());
 		
 		
-		Chevalet chevalet1 = new Chevalet();
+		Chevalet chevalet1 = new Chevalet(sac);
 		chevalet1.distribuer();
 		System.out.println(chevalet1.getLettres());
 		System.out.println(sac.getJetons());
-		Chevalet chevalet2 = new Chevalet();
+		Chevalet chevalet2 = new Chevalet(sac);
 		chevalet2.distribuer();
 		System.out.println(chevalet2.getLettres());
 	}

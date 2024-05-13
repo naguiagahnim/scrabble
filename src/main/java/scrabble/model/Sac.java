@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class Sac {
 	
-	public ArrayList<Jeton> jetons;
+	private ArrayList<Jeton> jetons;
 
 	public Sac() {
 		this.jetons = new ArrayList<Jeton>() ;
@@ -14,7 +14,11 @@ public class Sac {
 	public ArrayList<Jeton> getJetons() {
 		return this.jetons;
 	}
-
+	
+	public void ajout1Jeton(Jeton jeton) {
+		this.jetons.add(jeton);
+	}
+	
 	public void setJetonspioche(ArrayList<Jeton> jetons) {
 		this.jetons = jetons;
 	}
