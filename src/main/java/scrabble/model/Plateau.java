@@ -5,7 +5,7 @@ import scrabble.exceptions.HorsPlateauException;
 public class Plateau {
 
     // Taille du plateau
-    private static final int TAILLE = 3;
+    private static final int TAILLE = 15;
 
     // Cases du plateau
     private Case[][] cases;
