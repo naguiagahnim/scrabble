@@ -2,6 +2,7 @@ package scrabble.application;
 
 import scrabble.model.Chevalet;
 import scrabble.model.Jeton;
+import scrabble.model.Plateau;
 import scrabble.model.Sac;
 
 public class ScrabbleJeuxEssais {
@@ -66,6 +67,9 @@ public class ScrabbleJeuxEssais {
 		System.out.println(chevalet2.getLettres());
 		chevalet2.echanger(Jeton.E);
 		System.out.println(chevalet2.getLettres());
+		
+		Plateau plateau = new Plateau();
+		System.out.println(plateau.toString());
 	}
 	
 }
