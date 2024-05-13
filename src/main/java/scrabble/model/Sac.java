@@ -7,12 +7,12 @@ public class Sac {
 	
 	public ArrayList<Jeton> jetons;
 
-	public Sac(ArrayList<Jeton> jetons) {
-		this.jetons = jetons;
+	public Sac() {
+		this.jetons = new ArrayList<Jeton>() ;
 	}
 
 	public ArrayList<Jeton> getJetonspioche() {
-		return jetons;
+		return this.jetons;
 	}
 
 	public void setJetonspioche(ArrayList<Jeton> jetonspioche) {
