@@ -5,18 +5,18 @@ import java.util.Collections;
 
 public class Sac {
 	
-	private ArrayList<Jeton> jetons;
+	public ArrayList<Jeton> jetons;
 
 	public Sac() {
 		this.jetons = new ArrayList<Jeton>() ;
 	}
 
-	public ArrayList<Jeton> getJetonspioche() {
+	public ArrayList<Jeton> getJetons() {
 		return this.jetons;
 	}
 
-	public void setJetonspioche(ArrayList<Jeton> jetonspioche) {
-		this.jetons = jetonspioche;
+	public void setJetonspioche(ArrayList<Jeton> jetons) {
+		this.jetons = jetons;
 	}
 	
 	public void melanger() {

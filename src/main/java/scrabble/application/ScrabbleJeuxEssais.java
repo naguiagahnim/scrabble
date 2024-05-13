@@ -51,16 +51,16 @@ public class ScrabbleJeuxEssais {
 		sac.jetons.add(Jeton.Z);
 		
 		System.out.println("Avant de mélanger");
-		System.out.println(sac.getJetonspioche());
-		Sac.melanger();
+		System.out.println(sac.getJetons());
+		sac.melanger();
 		System.out.println("Après mélanger");
-		System.out.println(sac.getJetonspioche());
+		System.out.println(sac.getJetons());
 		
 		
 		Chevalet chevalet1 = new Chevalet();
 		chevalet1.distribuer();
 		System.out.println(chevalet1.getLettres());
-		System.out.println(sac.getJetonspioche());
+		System.out.println(sac.getJetons());
 		Chevalet chevalet2 = new Chevalet();
 		chevalet2.distribuer();
 		System.out.println(chevalet2.getLettres());
