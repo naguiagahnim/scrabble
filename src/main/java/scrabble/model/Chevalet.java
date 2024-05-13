@@ -28,11 +28,12 @@ public class Chevalet {
 		}
 	
 	public void echanger(Jeton jeton) {
-		for(Jeton el : jetons) {
+		for(Jeton el : this.jetons) {
 			if(el==jeton) {
-				jetons.remove(el);
-				sac.melanger();
-				jetons.add(this.sac.getJeton(0));
+				this.jetons.remove(el);
+				this.sac.melanger();
+				this.jetons.add(this.sac.getJeton(0));
+				break;
 			}
 		}
 	}

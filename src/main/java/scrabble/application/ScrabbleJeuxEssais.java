@@ -64,6 +64,8 @@ public class ScrabbleJeuxEssais {
 		Chevalet chevalet2 = new Chevalet(sac);
 		chevalet2.distribuer();
 		System.out.println(chevalet2.getLettres());
+		chevalet2.echanger(Jeton.E);
+		System.out.println(chevalet2.getLettres());
 	}
 	
 }
