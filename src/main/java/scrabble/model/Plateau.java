@@ -3,12 +3,18 @@ package scrabble.model;
 import scrabble.exceptions.HorsPlateauException;
 
 public class Plateau {
-	
-    private static final int TAILLE = 15;
+
+    // Taille du plateau
+    private static final int TAILLE = 3;
+
+    // Cases du plateau
     private Case[][] cases;
 
+    // Constructeur
     public Plateau() {
         this.cases = new Case[TAILLE][TAILLE];
+
+        // Initialise chaque case avec une étoile au centre
         for (int i = 0; i < TAILLE; i++) {
             for (int j = 0; j < TAILLE; j++) {
                 cases[i][j] = new Case(i == TAILLE / 2 && j == TAILLE / 2); // Case centrale étoile
@@ -16,6 +22,8 @@ public class Plateau {
         }
     }
 
+    // Récupère une case en fonction de ses coordonnées
+    // Renvoie la case si les coordonnées sont valides, sinon renvoie l'exception métier HorsPlateauException
     public Case getCase(int x, int y) throws HorsPlateauException {
         try {
             if (x < 0 || x >= TAILLE || y < 0 || y >= TAILLE) {
@@ -27,7 +35,8 @@ public class Plateau {
         }
     }
 
-
+    // Place un jeton sur une case
+    // Renvoie vrai si la case est libre et que le jeton a été placé, faux sinon
     public boolean placerJeton(Jeton jeton, int x, int y) throws HorsPlateauException {
         Case casee = getCase(x, y);
         if (!casee.isOccupe()) {
@@ -38,6 +47,7 @@ public class Plateau {
         return false;
     }
 
+    // Retire le jeton d'une case
     public void retirerJeton(int x, int y) throws HorsPlateauException {
         Case casee = getCase(x, y);
         if (casee.isOccupe()) {
@@ -46,6 +56,7 @@ public class Plateau {
         }
     }
 
+    // Représentation textuelle du plateau
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
