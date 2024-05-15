@@ -1,4 +1,4 @@
-package scrabble.exceptions;
+package src.main.java.scrabble.exceptions;
 
 public class HorsPlateauException extends Exception {
 

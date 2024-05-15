@@ -11,7 +11,7 @@ public class Sac {
 		this.jetons = new ArrayList<Jeton>() ;
 	}
 	
-	public ArrayList<Jeton> getJetons() {
+	public ArrayList<Jeton> retourneJetons() {
 		return this.jetons;
 	}
 	
