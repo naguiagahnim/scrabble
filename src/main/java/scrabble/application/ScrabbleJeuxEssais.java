@@ -11,16 +11,16 @@ public class ScrabbleJeuxEssais {
 		Sac sac = new Sac();
 		sac.remplirJeuFrançais();
 		System.out.println("Avant de mélanger");
-		System.out.println(sac.getJetons());
+		System.out.println(sac.retourneJetons());
 		sac.melanger();
 		System.out.println("Après mélanger");
-		System.out.println(sac.getJetons());
+		System.out.println(sac.retourneJetons());
 		
 		
 		Chevalet chevalet1 = new Chevalet(sac);
 		chevalet1.distribuer();
 		System.out.println(chevalet1.getLettres());
-		System.out.println(sac.getJetons());
+		System.out.println(sac.retourneJetons());
 		Chevalet chevalet2 = new Chevalet(sac);
 		chevalet2.distribuer();
 		System.out.println(chevalet2.getLettres());
