@@ -12,23 +12,23 @@ public class Case {
         this.jeton = null;
     }
 
-    public boolean isOccupe() {
+    public boolean estOccupe() {
         return occupe;
     }
 
-    public void setOccupe(boolean occupe) {
+    public void metEnOccupe(boolean occupe) {
         this.occupe = occupe;
     }
 
-    public Jeton getJeton() {
+    public Jeton retourneJeton() {
         return jeton;
     }
 
-    public void setJeton(Jeton jeton) {
+    public void metUnJeton(Jeton jeton) {
         this.jeton = jeton;
     }
 
-    public boolean isEtoile() {
+    public boolean estEtoile() {
         return etoile;
     }
 
