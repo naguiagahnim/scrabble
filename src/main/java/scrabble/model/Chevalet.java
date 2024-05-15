@@ -9,7 +9,7 @@ public class Chevalet {
 	private Sac sac;
 	
 	
-	public List<Jeton> getLettres() {
+	public List<Jeton> retourneLettres() {
 		return this.jetons;
 	}
 	

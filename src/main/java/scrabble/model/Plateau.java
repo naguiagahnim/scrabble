@@ -37,22 +37,22 @@ public class Plateau {
 
     // Place un jeton sur une case
     // Renvoie vrai si la case est libre et que le jeton a été placé, faux sinon
-    public boolean placerJeton(Jeton jeton, int positionx, int positiony) throws HorsPlateauException {
-        Case case1 = recupererJeton(positionx, positiony);
-        if (!case1.isOccupe()) {
-            case1.setOccupe(true);
-            case1.setJeton(jeton);
+    public boolean placerJeton(Jeton jeton, int x, int y) throws HorsPlateauException {
+        Case case1 = getCase(x, y);
+        if (!case1.estOccupe()) {
+            case1.metEnOccupe(true);
+            case1.metUnJeton(jeton);
             return true;
         }
         return false;
     }
 
     // Retire le jeton d'une case
-    public void retirerJeton(int positionx, int positiony) throws HorsPlateauException {
-        Case casee = recupererJeton(positionx, positiony);
-        if (casee.isOccupe()) {
-            casee.setOccupe(false);
-            casee.setJeton(null);
+    public void retirerJeton(int x, int y) throws HorsPlateauException {
+        Case case1 = getCase(x, y);
+        if (case1.estOccupe()) {
+            case1.metEnOccupe(false);
+            case1.metUnJeton(null);
         }
     }
 
