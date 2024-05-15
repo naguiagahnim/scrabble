@@ -9,48 +9,7 @@ public class ScrabbleJeuxEssais {
 
 	public static void main(String[] args) {
 		Sac sac = new Sac();
-		for (int i=0;i<15;i++)	{
-			sac.ajout1Jeton(Jeton.E);
-		}
-		for (int i=0;i<9;i++)	{
-			sac.ajout1Jeton(Jeton.A);
-		}
-		for (int i=0;i<8;i++)	{
-			sac.ajout1Jeton(Jeton.I);
-		}
-		for (int i=0;i<6;i++)	{
-			sac.ajout1Jeton(Jeton.N);
-			sac.ajout1Jeton(Jeton.O);
-			sac.ajout1Jeton(Jeton.R);
-			sac.ajout1Jeton(Jeton.S);
-			sac.ajout1Jeton(Jeton.T);
-			sac.ajout1Jeton(Jeton.U);
-		}
-		for (int i=0;i<5;i++)	{
-			sac.ajout1Jeton(Jeton.L);
-		}
-		for (int i=0;i<3;i++)	{
-			sac.ajout1Jeton(Jeton.D);
-			sac.ajout1Jeton(Jeton.M);
-		}
-		for (int i=0;i<2;i++)	{
-			sac.ajout1Jeton(Jeton.G);
-			sac.ajout1Jeton(Jeton.B);
-			sac.ajout1Jeton(Jeton.C);
-			sac.ajout1Jeton(Jeton.P);
-			sac.ajout1Jeton(Jeton.F);
-			sac.ajout1Jeton(Jeton.H);
-			sac.ajout1Jeton(Jeton.V);
-			sac.ajout1Jeton(Jeton.JOKER);
-		}
-		sac.ajout1Jeton(Jeton.J);
-		sac.ajout1Jeton(Jeton.Q);
-		sac.ajout1Jeton(Jeton.K);
-		sac.ajout1Jeton(Jeton.W);
-		sac.ajout1Jeton(Jeton.X);
-		sac.ajout1Jeton(Jeton.Y);
-		sac.ajout1Jeton(Jeton.Z);
-		
+		sac.remplirJeuFrançais();
 		System.out.println("Avant de mélanger");
 		System.out.println(sac.getJetons());
 		sac.melanger();
