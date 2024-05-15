@@ -2,6 +2,7 @@ package scrabble.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 public class Sac {
 	
@@ -77,6 +78,10 @@ public class Sac {
 		this.ajout1Jeton(Jeton.X);
 		this.ajout1Jeton(Jeton.Y);
 		this.ajout1Jeton(Jeton.Z);
-		
+	}
+	
+	public Jeton tirerJeton() {
+		Random randomNumber = new Random();
+		return retourneJeton(randomNumber.nextInt(62));
 	}
 }
