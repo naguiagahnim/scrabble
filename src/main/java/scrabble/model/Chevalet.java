@@ -22,7 +22,7 @@ public class Chevalet {
 	public void distribuer() {
 		int i=0;
 		for (int j=0; j<7;j++) {
-				this.jetons.add(this.sac.getJeton(i));
+				this.jetons.add(this.sac.retourneJeton(i));
 				this.sac.supprimerJeton(i);
 			}
 		}
@@ -32,7 +32,7 @@ public class Chevalet {
 			if(el==jeton) {
 				this.jetons.remove(el);
 				this.sac.melanger();
-				this.jetons.add(this.sac.getJeton(0));
+				this.jetons.add(this.sac.retourneJeton(0));
 				break;
 			}
 		}

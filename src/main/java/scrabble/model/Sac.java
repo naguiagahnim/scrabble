@@ -15,7 +15,7 @@ public class Sac {
 		return this.jetons;
 	}
 	
-	public Jeton getJeton(int indice) {
+	public Jeton retourneJeton(int indice) {
 		return this.jetons.get(indice);
 	}
 	
@@ -23,7 +23,7 @@ public class Sac {
 		this.jetons.add(jeton);
 	}
 	
-	public void setJetonspioche(ArrayList<Jeton> jetons) {
+	public void metUnJetonspioche(ArrayList<Jeton> jetons) {
 		this.jetons = jetons;
 	}
 	
