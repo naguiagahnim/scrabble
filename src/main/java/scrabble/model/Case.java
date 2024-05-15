@@ -11,7 +11,7 @@ public class Case {
         this.occupe = false;
         this.jeton = null;
     }
-
+    
     public boolean estOccupe() {
         return occupe;
     }
