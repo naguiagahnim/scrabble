@@ -19,13 +19,13 @@ public class ScrabbleJeuxEssais {
 		
 		Chevalet chevalet1 = new Chevalet(sac);
 		chevalet1.distribuer();
-		System.out.println(chevalet1.getLettres());
+		System.out.println(chevalet1.retourneLettres());
 		System.out.println(sac.retourneJetons());
 		Chevalet chevalet2 = new Chevalet(sac);
 		chevalet2.distribuer();
-		System.out.println(chevalet2.getLettres());
+		System.out.println(chevalet2.retourneLettres());
 		chevalet2.echanger(Jeton.E);
-		System.out.println(chevalet2.getLettres());
+		System.out.println(chevalet2.retourneLettres());
 		
 		Plateau plateau = new Plateau();
 		System.out.println(plateau.toString());
