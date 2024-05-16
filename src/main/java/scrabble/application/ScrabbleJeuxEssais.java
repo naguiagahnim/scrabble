@@ -1,5 +1,6 @@
 package scrabble.application;
 
+import scrabble.controleur.Arbitre;
 import scrabble.model.Chevalet;
 import scrabble.model.Jeton;
 import scrabble.model.Plateau;
@@ -8,7 +9,11 @@ import scrabble.model.Sac;
 public class ScrabbleJeuxEssais {
 
 	public static void main(String[] args) {
+		
 		Sac sac = new Sac();
+		Chevalet chevalet1 = new Chevalet();
+		Chevalet chevalet2 = new Chevalet();
+		Arbitre arbitre = new Arbitre();
 		sac.remplirJeuFrançais();
 		System.out.println("Avant de mélanger");
 		System.out.println(sac.retourneJetons());
@@ -16,16 +21,14 @@ public class ScrabbleJeuxEssais {
 		System.out.println("Après mélanger");
 		System.out.println(sac.retourneJetons());
 		
-		
-		Chevalet chevalet1 = new Chevalet();
-		chevalet1.distribuer();
-		System.out.println(chevalet1.retourneLettres());
+	
+		arbitre.distribuer(sac, chevalet1);
+		System.out.println(chevalet1.retourneJetons());
 		System.out.println(sac.retourneJetons());
-		Chevalet chevalet2 = new Chevalet();
-		chevalet2.distribuer();
-		System.out.println(chevalet2.retourneLettres());
-		chevalet2.echanger(Jeton.E);
-		System.out.println(chevalet2.retourneLettres());
+		arbitre.distribuer(sac, chevalet2);
+		System.out.println(chevalet2.retourneJetons());
+		arbitre.echanger(sac, chevalet2, Jeton.E);
+		System.out.println(chevalet2.retourneJetons());
 		
 		Plateau plateau = new Plateau();
 		System.out.println(plateau.toString());
