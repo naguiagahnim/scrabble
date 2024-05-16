@@ -1,7 +1,5 @@
 package scrabble.controleur;
 
-import java.util.List;
-
 import scrabble.model.Chevalet;
 import scrabble.model.Jeton;
 import scrabble.model.Sac;
