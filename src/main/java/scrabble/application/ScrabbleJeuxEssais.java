@@ -17,11 +17,11 @@ public class ScrabbleJeuxEssais {
 		System.out.println(sac.retourneJetons());
 		
 		
-		Chevalet chevalet1 = new Chevalet(sac);
+		Chevalet chevalet1 = new Chevalet();
 		chevalet1.distribuer();
 		System.out.println(chevalet1.retourneLettres());
 		System.out.println(sac.retourneJetons());
-		Chevalet chevalet2 = new Chevalet(sac);
+		Chevalet chevalet2 = new Chevalet();
 		chevalet2.distribuer();
 		System.out.println(chevalet2.retourneLettres());
 		chevalet2.echanger(Jeton.E);
