@@ -26,6 +26,7 @@ public class Joueur {
 				plateau.placerJeton(jeton, positionx, positiony);
 			if(jetonaechanger==Jeton.JOKER) {
 				this.estUnJoker(jeton);
+				plateau.placerJeton(jeton, positionx, positiony);
 			}
 				break;
 			}
@@ -72,10 +73,10 @@ public class Joueur {
             }
         }
     }
-	}   
+	
 	public void estUnJoker(Jeton jeton) {
 		System.out.println("quelles lettres voulez vous ?");
 		Scanner estJoker = new Scanner(System.in);
-
+		
 	}
 }
