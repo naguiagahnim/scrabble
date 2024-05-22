@@ -60,7 +60,7 @@ public class Joueur {
             int x = horizontal ? positionx + i : positionx;
             int y = horizontal ? positiony : positiony + i;
             for (Jeton jeton : this.retourneChevalet().retourneJetons()) {
-                if (jeton.name().charAt(0) == lettres[i]) {
+                if (jeton.toString().charAt(0) == lettres[i]) {
                     this.placerLettre(jeton, x, y, plateau);
                     break;
                 }
