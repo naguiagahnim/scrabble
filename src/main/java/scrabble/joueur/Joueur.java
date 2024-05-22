@@ -1,19 +1,14 @@
 package scrabble.joueur;
 
 import java.util.Scanner;
-
 import scrabble.exceptions.HorsPlateauException;
 import scrabble.model.Chevalet;
 import scrabble.model.Jeton;
 import scrabble.model.Plateau;
 
 public class Joueur {
-	private Chevalet chevalet;
-	
-	
-	public Joueur(Chevalet chevalet) {
-		this.chevalet = chevalet;
-	}
+    private Chevalet chevalet;
+    private boolean premierMot = true; 
 
 	public Chevalet retourneChevalet() {
 		return this.chevalet;
@@ -36,9 +31,37 @@ public class Joueur {
 	public void placerMot(String mot, int positionx, int positiony, boolean horizontal, Plateau plateau) throws HorsPlateauException {
         // Convertir le mot en tableau de char
         char[] lettres = mot.toCharArray();
-  
 
-        // Vérifier que toutes les lettres peuvent être placées sur le plateau
+        int centre = plateau.retourneTaille() / 2;
+
+        if (premierMot) {
+            boolean passeParCentre = false;
+            for (int i = 0; i < lettres.length; i++) {
+                int x = horizontal ? positionx + i : positionx;
+                int y = horizontal ? positiony : positiony + i;
+                if (x == centre && y == centre) {
+                    passeParCentre = true;
+                    break;
+                }
+            }
+            if (!passeParCentre) {
+                throw new HorsPlateauException("Le premier mot doit passer par le centre du plateau !");
+            }
+        } else {
+            boolean appuieSurLettreExistante = false;
+            for (int i = 0; i < lettres.length; i++) {
+                int x = horizontal ? positionx + i : positionx;
+                int y = horizontal ? positiony : positiony + i;
+                if (plateau.recupererJeton(x, y) != null) {
+                    appuieSurLettreExistante = true;
+                    break;
+                }
+            }
+            if (!appuieSurLettreExistante) {
+                throw new HorsPlateauException("Les mots suivants doivent s'appuyer sur une lettre existante !");
+            }
+        }
+
         for (int i = 0; i < lettres.length; i++) {
             int x = horizontal ? positionx + i : positionx;
             int y = horizontal ? positiony : positiony + i;
@@ -47,7 +70,6 @@ public class Joueur {
             }
         }
 
-        // Vérifier que le joueur possède tous les jetons nécessaires
         for (char lettre : lettres) {
             boolean trouveJeton = false;
             for (Jeton jeton : this.retourneChevalet().retourneJetons()) {
@@ -61,7 +83,6 @@ public class Joueur {
             }
         }
 
-        // Placer les jetons sur le plateau et les retirer du chevalet
         for (int i = 0; i < lettres.length; i++) {
             int x = horizontal ? positionx + i : positionx;
             int y = horizontal ? positiony : positiony + i;
@@ -72,6 +93,8 @@ public class Joueur {
                 }
             }
         }
+
+        premierMot = false; 
     }
 	
 	public void estUnJoker(Jeton jeton) {
