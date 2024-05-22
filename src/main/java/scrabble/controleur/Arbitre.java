@@ -9,9 +9,9 @@ import scrabble.model.Sac;
 public class Arbitre {
 	
 	public void echanger(Sac sac, Joueur joueur, Jeton jeton) {
-		for(Jeton el : joueur.retourneChevalet().retourneJetons()) {
-			if(el==jeton) {
-				joueur.retourneChevalet().retourneJetons().remove(el);
+		for(Jeton jetonaechanger : joueur.retourneChevalet().retourneJetons()) {
+			if(jetonaechanger==jeton) {
+				joueur.retourneChevalet().retourneJetons().remove(jetonaechanger);
 				sac.melanger();
 				joueur.retourneChevalet().retourneJetons().add(sac.retourneJeton(0));
 				break;
