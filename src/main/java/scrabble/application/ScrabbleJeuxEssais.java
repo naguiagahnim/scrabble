@@ -1,6 +1,7 @@
 package scrabble.application;
 
 import scrabble.controleur.Arbitre;
+import scrabble.exceptions.HorsPlateauException;
 import scrabble.joueur.Joueur;
 import scrabble.model.Chevalet;
 import scrabble.model.Jeton;
@@ -9,7 +10,7 @@ import scrabble.model.Sac;
 
 public class ScrabbleJeuxEssais {
 
-	public static void main(String[] args) {
+	public static void main(String[] args)  {
 		
 		Sac sac = new Sac();
 		Chevalet chevalet1 = new Chevalet();
@@ -26,16 +27,23 @@ public class ScrabbleJeuxEssais {
 		
 	
 		arbitre.distribuer(sac, j1);
-		System.out.println(chevalet1.retourneJetons());
+		System.out.println(j1.retourneChevalet().retourneJetons());
 		System.out.println(sac.retourneJetons());
 		arbitre.distribuer(sac, j2);
-		System.out.println(chevalet2.retourneJetons());
+		System.out.println(j2.retourneChevalet().retourneJetons());
 		arbitre.echanger(sac, j2, Jeton.E);
-		System.out.println(chevalet2.retourneJetons());
+		System.out.println(j2.retourneChevalet().retourneJetons());
 		
 		Plateau plateau = new Plateau();
 		System.out.println(plateau.toString());
 		//fin v1
+		try {
+			j1.placerLettre(Jeton.E, 6, 9, plateau);
+		} catch (HorsPlateauException e) {
+			System.out.println("Le jeton n'est pas dans le chevalet");
+		}
+		System.out.println(plateau.toString());
+		System.out.println(j1.retourneChevalet().retourneJetons());
 	}
 	
 }
