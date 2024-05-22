@@ -32,6 +32,7 @@ public class ScrabbleJeuxEssais {
 		
 		Plateau plateau = new Plateau();
 		System.out.println(plateau.toString());
+		//fin v1
 	}
 	
 }
