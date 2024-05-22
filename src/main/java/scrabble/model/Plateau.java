@@ -21,6 +21,10 @@ public class Plateau {
             }
         }
     }
+    
+    public int retourneTaille() {
+    	return this.TAILLE;
+    }
 
     // Récupère une case en fonction de ses coordonnées
     // Renvoie la case si les coordonnées sont valides, sinon renvoie l'exception métier HorsPlateauException
