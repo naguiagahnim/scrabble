@@ -7,11 +7,14 @@ import scrabble.model.Jeton;
 import scrabble.model.Plateau;
 
 public class Joueur {
-    private Chevalet chevalet;
-    private boolean premierMot = true; 
+    private Chevalet chevalet; 
 
 	public Chevalet retourneChevalet() {
 		return this.chevalet;
+	}
+	
+	public Joueur(Chevalet chevalet) {
+		this.chevalet = chevalet;
 	}
 	
 	public void placerLettre(Jeton jeton, int positionx,int positiony, Plateau plateau) throws HorsPlateauException {
@@ -28,9 +31,10 @@ public class Joueur {
 		} 
 	}  
 	
+	
 	public void placerMot(String mot, int positionx, int positiony, boolean horizontal, Plateau plateau) throws HorsPlateauException {
-        // Convertir le mot en tableau de char
         char[] lettres = mot.toCharArray();
+        boolean premierMot = true;
 
         int centre = plateau.retourneTaille() / 2;
 

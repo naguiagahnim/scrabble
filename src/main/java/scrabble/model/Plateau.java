@@ -57,6 +57,10 @@ public class Plateau {
             case1.metUnJeton(null);
         }
     }
+    
+    public boolean estVide() {
+    	
+    }
 
     // Représentation textuelle du plateau
     @Override
