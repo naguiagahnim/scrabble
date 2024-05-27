@@ -102,7 +102,7 @@ public class Joueur {
     }
 	
 	public void estUnJoker(Jeton jeton) {
-		System.out.println("quelles lettres voulez vous ?");
+		System.out.println("Quelle lettre voulez vous ?");
 		Scanner estJoker = new Scanner(System.in);
 		
 	}
