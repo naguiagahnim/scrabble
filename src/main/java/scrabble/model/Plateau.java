@@ -59,7 +59,14 @@ public class Plateau {
     }
     
     public boolean estVide() {
-    	
+        for (int i = 0; i < TAILLE; i++) {
+            for (int j = 0; j < TAILLE; j++) {
+                if (cases[i][j].occupe()) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     // Représentation textuelle du plateau

@@ -34,7 +34,7 @@ public class Joueur {
 	
 	public void placerMot(String mot, int positionx, int positiony, boolean horizontal, Plateau plateau) throws HorsPlateauException {
         char[] lettres = mot.toCharArray();
-        boolean premierMot = true;
+        boolean premierMot = plateau.estVide();
 
         int centre = plateau.retourneTaille() / 2;
 
