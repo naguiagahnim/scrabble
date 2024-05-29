@@ -40,6 +40,7 @@ public class Joueur {
         int centre = plateau.retourneTaille() / 2;
 
         try {
+            // Vérifier que le premier mot passe par le centre du plateau
             if (premierMot) {
                 boolean passeParCentre = false;
                 for (int i = 0; i < lettres.length; i++) {
@@ -54,6 +55,7 @@ public class Joueur {
                     throw new HorsPlateauException("Le premier mot doit passer par le centre du plateau !");
                 }
             } else {
+                // Vérifier que le mot s'appuie sur une lettre existante
                 boolean appuieSurLettreExistante = false;
                 for (int i = 0; i < lettres.length; i++) {
                     int x = horizontal ? positionx + i : positionx;
@@ -68,6 +70,7 @@ public class Joueur {
                 }
             }
 
+            // Vérifier que le mot ne sort pas du plateau
             for (int i = 0; i < lettres.length; i++) {
                 int x = horizontal ? positionx + i : positionx;
                 int y = horizontal ? positiony : positiony + i;
@@ -75,6 +78,7 @@ public class Joueur {
                     throw new HorsPlateauException("Le mot sort du plateau !");
                 }
 
+                // Vérifier que le joueur possède les jetons nécessaires
                 boolean trouveJeton = false;
                 for (Jeton jeton : this.retourneChevalet().retourneJetons()) {
                     if (jeton.name().charAt(0) == lettres[i]) {
@@ -86,11 +90,13 @@ public class Joueur {
                     throw new HorsPlateauException("Le joueur n'a pas tous les jetons nécessaires pour former ce mot !");
                 }
                 
+                // Vérifier que la case n'est pas déjà occupée (sauf pour le premier mot au centre)
                 if (!premierMot && plateau.recupererJeton(x, y) != null) {
                     throw new HorsPlateauException("Il est impossible de placer une lettre sur une case occupée !");
                 }
             }
 
+            // Placer chaque lettre du mot sur le plateau
             for (int i = 0; i < lettres.length; i++) {
                 int x = horizontal ? positionx + i : positionx;
                 int y = horizontal ? positiony : positiony + i;
