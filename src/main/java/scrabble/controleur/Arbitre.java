@@ -12,6 +12,7 @@ import scrabble.model.Constant;
 
 public class Arbitre {
 	int nbJetonsChevalet = scrabble.model.Constant.retourneNbJetonsChevalet();
+	
 	public void echanger(Sac sac, Joueur joueur, Jeton jeton) {
 		for(Jeton jetonaechanger : joueur.retourneChevalet().retourneJetons()) {
 			if(jetonaechanger==jeton) {
@@ -46,14 +47,14 @@ public class Arbitre {
         System.out.println("1 - Jouer un mot");
         System.out.println("2 - Echanger des lettres");
         System.out.println("3 - Quitter la partie");
-        while(! rep.trim().equals("1") && rep.trim() != "2" && rep.trim() != "3") {
+        while(! rep.trim().equals("1") && ! rep.trim().equals("2") && ! rep.trim().equals("3")) {
             System.out.println("Quel est votre choix (1,2 ou 3) ?");
             rep = scanner.nextLine();
         }
         if(rep.trim().equals("1")) {
             
             System.out.println(joueur.retourneChevalet().retourneJetons());
-            String mot = choixMot(scanner);
+            String mot = choixMot(scanner, "Quel est le mot choisi ?");
             int posx = choixPos(scanner,"x");
             int posy = choixPos(scanner,"y");
             boolean horizontal = choixOrientation(scanner);
@@ -62,6 +63,23 @@ public class Arbitre {
             System.out.println(plateau.toString());
             this.remplirChevalet(sac, joueur);
         }
+        
+        if(rep.trim().equals("2")) {
+        	System.out.println(joueur.retourneChevalet().retourneJetons());
+        	String lettres = choixMot(scanner, "Donnez la liste des lettres que vous voulez échanger : ");
+        	lettres = lettres.toUpperCase();
+        	Jeton jetonaéchanger;
+        	char[] lettresàéchanger = lettres.toCharArray();
+        	for(char lettre : lettresàéchanger) {
+        		for (Jeton jeton : joueur.retourneChevalet().retourneJetons()) {
+                    if (jeton.toString().charAt(0) == lettre) {
+                    	jetonaéchanger = jeton;
+                    	echanger(sac,joueur,jeton);
+                    	break;
+                    }
+        		}
+        	}
+        }
         if(rep.trim().equals("3")) {
         	return true;
         }
@@ -69,10 +87,10 @@ public class Arbitre {
         
    }
 
-	private String choixMot(Scanner scanner) {
+	private String choixMot(Scanner scanner, String message) {
 		String mot = "";
 		while(mot.trim().equals("")) {
-		    System.out.println("Quel est votre mot choisi ?");
+		    System.out.println(message);
 		    mot = scanner.nextLine(); 
 		}
 		return mot;
