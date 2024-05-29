@@ -20,14 +20,13 @@ public class Joueur {
     }
 
     public void placerLettre(Jeton jeton, int positionx, int positiony, Plateau plateau) throws HorsPlateauException {
-        for (Jeton jetonaechanger : new ArrayList<>(this.retourneChevalet().retourneJetons())) {
-            if (jetonaechanger == jeton) {
-                this.retourneChevalet().retourneJetons().remove(jetonaechanger);
-                plateau.placerJeton(jeton, positionx, positiony);
-                if (jetonaechanger == Jeton.JOKER) {
-                    this.estUnJoker(jeton);
-                    plateau.placerJeton(jeton, positionx, positiony);
+        for (Jeton jetonAechanger : this.retourneChevalet().retourneJetons()) {
+            if (jetonAechanger == jeton) {
+                this.retourneChevalet().retourneJetons().remove(jetonAechanger);
+                if (jetonAechanger == Jeton.JOKER) {
+                    jeton = estUnJoker(jetonAechanger);
                 }
+                plateau.placerJeton(jeton, positionx, positiony);
                 break;
             }
         }
@@ -118,9 +117,21 @@ public class Joueur {
         }
     }
 
-    public void estUnJoker(Jeton jeton) {
-        System.out.println("Quelle lettre voulez-vous ?");
-        Scanner estJoker = new Scanner(System.in);
-        //TODO
+    public Jeton estUnJoker(Jeton jeton) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Quelles lettres voulez-vous pour le joker ?");
+        String lettre = scanner.nextLine().toUpperCase();
+        
+        while (lettre.length() != 1 || !Character.isLetter(lettre.charAt(0))) {
+            System.out.println("Entrée invalide. Veuillez entrer une seule lettre.");
+            lettre = scanner.nextLine().toUpperCase();
+        }
+        
+        Jeton nouveauJeton = Jeton.valueOf(lettre);
+
+        this.retourneChevalet().retourneJetons().remove(jeton);
+        this.retourneChevalet().retourneJetons().add(nouveauJeton);
+        
+        return nouveauJeton;
     }
 }
