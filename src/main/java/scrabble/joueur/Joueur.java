@@ -1,5 +1,7 @@
 package scrabble.joueur;
 
+//TODO vertical ne marche pas et en plus les mots peuvent être placés sans être connectés
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
