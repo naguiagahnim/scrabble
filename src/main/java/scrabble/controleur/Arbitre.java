@@ -42,13 +42,10 @@ public class Arbitre {
             System.out.println("Quel est votre choix (1,2 ou 3) ?");
             rep = scanner.nextLine();
         }
-        if(rep.trim() != "1");{
-            String mot = "";
+        if(rep.trim().equals("1"));{
+            
             System.out.println(joueur.retourneChevalet());
-            while(mot.trim().equals("")) {
-                System.out.println("Quel est votre mot choisi ?");
-                mot = scanner.nextLine(); 
-            }
+            String mot = choixMot(scanner);
             int posx = choixPos(scanner,"x");
             int posy = choixPos(scanner,"y");
             try {
@@ -59,12 +56,21 @@ public class Arbitre {
         }
    }
 
-	private int choixPos(Scanner scanner, String pos) {
-		int posy = -1;
-		while(posy < 0 && posy > 14) {
-		    System.out.println("Quel est la position " + pos + " du mot choisi (de 0 à 14");
-		    posy = scanner.nextInt(); 
+	private String choixMot(Scanner scanner) {
+		String mot = "";
+		while(mot.trim().equals("")) {
+		    System.out.println("Quel est votre mot choisi ?");
+		    mot = scanner.nextLine(); 
 		}
-		return posy;
+		return mot;
+	}
+
+	private int choixPos(Scanner scanner, String axe) {
+		int pos = -1;
+		while(pos < 0 && pos > 14) {
+		    System.out.println("Quel est la position " + pos + " du mot choisi (de 0 à 14");
+		    pos = scanner.nextInt(); 
+		}
+		return pos;
 	}
 }
