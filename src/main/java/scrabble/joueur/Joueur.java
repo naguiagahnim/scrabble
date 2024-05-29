@@ -79,11 +79,12 @@ public class Joueur {
                 if (jeton == null) {
                     throw new HorsPlateauException("Le joueur n'a pas tous les jetons nécessaires pour former ce mot !");
                 }
-
-                if (plateau.recupererJeton(x, y) != null) {
+                if (!premierMot) {
+                	if (plateau.recupererJeton(x, y) != null) {
                     throw new HorsPlateauException("Il est impossible de placer une lettre sur une case occupée !");
+                	}
                 }
-
+                	
                 lettresUtilisees.add(jeton);
                 this.placerLettre(jeton, x, y, plateau);
             }

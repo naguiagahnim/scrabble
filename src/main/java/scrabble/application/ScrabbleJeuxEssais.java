@@ -37,13 +37,14 @@ public class ScrabbleJeuxEssais {
 		Plateau plateau = new Plateau();
 		System.out.println(plateau.toString());
 		//fin v1
-		try {
+		/*try {
 			j1.placerLettre(Jeton.E, 6, 9, plateau);
 		} catch (HorsPlateauException e) {
 			System.out.println("Le jeton n'est pas dans le chevalet");
 		}
 		System.out.println(plateau.toString());
 		System.out.println(j1.retourneChevalet().retourneJetons());
+		*/
 		arbitre.JouerUnePartie(j2, sac, plateau);
 	}
 	
