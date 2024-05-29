@@ -26,10 +26,10 @@ public class ScrabbleJeuxEssais {
 		System.out.println(sac.retourneJetons());
 		
 	
-		arbitre.distribuer(sac, j1);
+		arbitre.remplirChevalet(sac, j1);
 		System.out.println(j1.retourneChevalet().retourneJetons());
 		System.out.println(sac.retourneJetons());
-		arbitre.distribuer(sac, j2);
+		arbitre.remplirChevalet(sac, j2);
 		System.out.println(j2.retourneChevalet().retourneJetons());
 		arbitre.echanger(sac, j2, Jeton.E);
 		System.out.println(j2.retourneChevalet().retourneJetons());

@@ -8,10 +8,10 @@ import scrabble.model.Chevalet;
 import scrabble.model.Jeton;
 import scrabble.model.Plateau;
 import scrabble.model.Sac;
-
+import scrabble.model.Constant;
 
 public class Arbitre {
-	
+	int nbJetonsChevalet = scrabble.model.Constant.retourneNbJetonsChevalet();
 	public void echanger(Sac sac, Joueur joueur, Jeton jeton) {
 		for(Jeton jetonaechanger : joueur.retourneChevalet().retourneJetons()) {
 			if(jetonaechanger==jeton) {
@@ -23,15 +23,23 @@ public class Arbitre {
 		}
 	}
 	
-	public void distribuer(Sac sac, Joueur joueur) {
+	public void remplirChevalet(Sac sac, Joueur joueur) {
 		int i=0;
-		for (int j=0; j<7;j++) {
+		
+		for (int j=0; joueur.retourneChevalet().retourneJetons().size()<nbJetonsChevalet;j++) {
 				joueur.retourneChevalet().retourneJetons().add(sac.retourneJeton(i));
 				sac.supprimerJeton(i);
 			}
 	}
 	
-	public void jouerUnTour(Joueur joueur,Sac sac, Plateau plateau) {
+	public void JouerUnePartie(Joueur joueur,Sac sac, Plateau plateau) {
+		boolean finPartie = false;
+		while(! finPartie) {
+			finPartie = this.jouerUnTour(joueur, sac, plateau);
+		}
+	}
+	
+	public boolean jouerUnTour(Joueur joueur,Sac sac, Plateau plateau) {
         Scanner scanner = new Scanner(System.in);
         String rep = "";
         System.out.println("Voici les options possibles pour ce tour :");
@@ -42,7 +50,7 @@ public class Arbitre {
             System.out.println("Quel est votre choix (1,2 ou 3) ?");
             rep = scanner.nextLine();
         }
-        if(rep.trim().equals("1"));{
+        if(rep.trim().equals("1")) {
             
             System.out.println(joueur.retourneChevalet().retourneJetons());
             String mot = choixMot(scanner);
@@ -53,6 +61,11 @@ public class Arbitre {
             joueur.placerMot(mot, posx, posy, false, plateau);
             System.out.println(plateau.toString());
         }
+        if(rep.trim().equals("3")) {
+        	return false;
+        }
+		return true;
+        
    }
 
 	private String choixMot(Scanner scanner) {
@@ -82,5 +95,9 @@ public class Arbitre {
 		}
 		bool = mot.trim().equals("h") ? true : false;
 		return bool;
+	}
+	
+	public void remplirChevalet() {
+		
 	}
 }
