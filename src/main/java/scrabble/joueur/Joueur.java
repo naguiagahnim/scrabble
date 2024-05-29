@@ -115,7 +115,9 @@ public class Joueur {
             } else if (choix.equals("r")) {
                 System.out.println("Rejouez votre tour.");
             }
+           
         }
+        
     }
 
     public void estUnJoker(Jeton jeton) {

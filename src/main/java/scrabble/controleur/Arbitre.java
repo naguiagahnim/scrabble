@@ -60,11 +60,12 @@ public class Arbitre {
             
             joueur.placerMot(mot, posx, posy, false, plateau);
             System.out.println(plateau.toString());
+            this.remplirChevalet(sac, joueur);
         }
         if(rep.trim().equals("3")) {
-        	return false;
+        	return true;
         }
-		return true;
+		return false;
         
    }
 
@@ -95,9 +96,5 @@ public class Arbitre {
 		}
 		bool = mot.trim().equals("h") ? true : false;
 		return bool;
-	}
-	
-	public void remplirChevalet() {
-		
 	}
 }

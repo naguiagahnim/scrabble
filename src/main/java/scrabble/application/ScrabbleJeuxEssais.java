@@ -44,7 +44,7 @@ public class ScrabbleJeuxEssais {
 		}
 		System.out.println(plateau.toString());
 		System.out.println(j1.retourneChevalet().retourneJetons());
-		arbitre.jouerUnTour(j2, sac, plateau);
+		arbitre.JouerUnePartie(j2, sac, plateau);
 	}
 	
 }
