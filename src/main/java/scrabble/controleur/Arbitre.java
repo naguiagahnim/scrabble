@@ -68,12 +68,12 @@ public class Arbitre {
         	System.out.println(joueur.retourneChevalet().retourneJetons());
         	String lettres = choixMot(scanner, "Donnez la liste des lettres que vous voulez échanger : ");
         	lettres = lettres.toUpperCase();
-        	Jeton jetonaéchanger;
-        	char[] lettresàéchanger = lettres.toCharArray();
-        	for(char lettre : lettresàéchanger) {
+        	Jeton jetonaechanger;
+        	char[] lettresaechanger = lettres.toCharArray();
+        	for(char lettre : lettresaechanger) {
         		for (Jeton jeton : joueur.retourneChevalet().retourneJetons()) {
                     if (jeton.toString().charAt(0) == lettre) {
-                    	jetonaéchanger = jeton;
+                    	jetonaechanger = jeton;
                     	echanger(sac,joueur,jeton);
                     	break;
                     }

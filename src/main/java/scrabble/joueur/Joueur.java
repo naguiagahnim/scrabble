@@ -75,18 +75,32 @@ public class Joueur {
                     throw new HorsPlateauException("Le mot sort du plateau !");
                 }
 
-                Jeton jeton = this.retourneChevalet().retourneJetons().get(i);
-                if (jeton == null) {
+                boolean trouveJeton = false;
+                for (Jeton jeton : this.retourneChevalet().retourneJetons()) {
+                    if (jeton.name().charAt(0) == lettres[i]) {
+                        trouveJeton = true;
+                        break;
+                    }
+                }
+                if (!trouveJeton) {
                     throw new HorsPlateauException("Le joueur n'a pas tous les jetons nécessaires pour former ce mot !");
                 }
-                if (!premierMot) {
-                	if (plateau.recupererJeton(x, y) != null) {
+                
+                if (!premierMot && plateau.recupererJeton(x, y) != null) {
                     throw new HorsPlateauException("Il est impossible de placer une lettre sur une case occupée !");
-                	}
                 }
-                	
-                lettresUtilisees.add(jeton);
-                this.placerLettre(jeton, x, y, plateau);
+            }
+
+            for (int i = 0; i < lettres.length; i++) {
+                int x = horizontal ? positionx + i : positionx;
+                int y = horizontal ? positiony : positiony + i;
+                for (Jeton jeton : this.retourneChevalet().retourneJetons()) {
+                    if (jeton.toString().charAt(0) == lettres[i]) {
+                        lettresUtilisees.add(jeton);
+                        this.placerLettre(jeton, x, y, plateau);
+                        break;
+                    }
+                }
             }
 
         } catch (HorsPlateauException e) {
@@ -95,10 +109,14 @@ public class Joueur {
             System.out.println("Souhaitez-vous rejouer (r) ou passer votre tour (p) ?");
             Scanner scanner = new Scanner(System.in);
             String choix = scanner.nextLine().toLowerCase();
-            
-
+            if (choix.equals("p")) {
+                System.out.println("Tour passé.");
+                return;
+            } else if (choix.equals("r")) {
+                System.out.println("Rejouez votre tour.");
             }
         }
+    }
 
     public Jeton estUnJoker(Jeton jeton) {
         Scanner scanner = new Scanner(System.in);
