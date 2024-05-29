@@ -1,7 +1,5 @@
 package scrabble.joueur;
 
-//TODO vertical ne marche pas et en plus les mots peuvent être placés sans être connectés
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -37,7 +35,7 @@ public class Joueur {
 
     public void placerMot(String mot, int positionx, int positiony, boolean horizontal, Plateau plateau) {
         mot = mot.toUpperCase();
-    	char[] lettres = mot.toCharArray();
+        char[] lettres = mot.toCharArray();
         boolean premierMot = plateau.estVide();
         List<Jeton> lettresUtilisees = new ArrayList<>();
         int centre = plateau.retourneTaille() / 2;
@@ -117,14 +115,12 @@ public class Joueur {
             } else if (choix.equals("r")) {
                 System.out.println("Rejouez votre tour.");
             }
-           
         }
-        
     }
 
     public void estUnJoker(Jeton jeton) {
-        System.out.println("Quelle lettre voulez vous ?");
+        System.out.println("Quelle lettre voulez-vous ?");
         Scanner estJoker = new Scanner(System.in);
-        // Logique pour gérer la sélection de la lettre pour le joker
+        //TODO
     }
 }
