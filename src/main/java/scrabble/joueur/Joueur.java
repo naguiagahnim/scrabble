@@ -101,7 +101,6 @@ public class Joueur {
                 }
             }
 
-            premierMot = false; 
         } catch (HorsPlateauException e) {
             System.out.println(e.getMessage());
             this.retourneChevalet().retourneJetons().addAll(lettresUtilisees);
@@ -121,17 +120,17 @@ public class Joueur {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Quelles lettres voulez-vous pour le joker ?");
         String lettre = scanner.nextLine().toUpperCase();
-        
+
         while (lettre.length() != 1 || !Character.isLetter(lettre.charAt(0))) {
             System.out.println("Entrée invalide. Veuillez entrer une seule lettre.");
             lettre = scanner.nextLine().toUpperCase();
         }
-        
+
         Jeton nouveauJeton = Jeton.valueOf(lettre);
 
         this.retourneChevalet().retourneJetons().remove(jeton);
         this.retourneChevalet().retourneJetons().add(nouveauJeton);
-        
+
         return nouveauJeton;
     }
 }
