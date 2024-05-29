@@ -38,21 +38,23 @@ public class Arbitre {
         System.out.println("1 - Jouer un mot");
         System.out.println("2 - Echanger des lettres");
         System.out.println("3 - Quitter la partie");
-        while(rep.trim() != "1" && rep.trim() != "2" && rep.trim() != "3") {
+        while(! rep.trim().equals("1") && rep.trim() != "2" && rep.trim() != "3") {
             System.out.println("Quel est votre choix (1,2 ou 3) ?");
             rep = scanner.nextLine();
         }
         if(rep.trim().equals("1"));{
             
-            System.out.println(joueur.retourneChevalet());
+            System.out.println(joueur.retourneChevalet().retourneJetons());
             String mot = choixMot(scanner);
             int posx = choixPos(scanner,"x");
             int posy = choixPos(scanner,"y");
+            boolean horizontal = choixOrientation(scanner);
             try {
                joueur.placerMot(mot, posx, posy, false, plateau);
            } catch (HorsPlateauException e) {
                System.out.println("Le mot n'est pas bien placé (depasse du plateau ou pas dans le tableau)");
            }
+            System.out.println(plateau.toString());
         }
    }
 
@@ -67,10 +69,21 @@ public class Arbitre {
 
 	private int choixPos(Scanner scanner, String axe) {
 		int pos = -1;
-		while(pos < 0 && pos > 14) {
-		    System.out.println("Quel est la position " + pos + " du mot choisi (de 0 à 14");
+		while(pos < 0 || pos > 14) {
+		    System.out.println("Quel est la position " + axe + " du mot choisi (de 0 à 14)");
 		    pos = scanner.nextInt(); 
 		}
 		return pos;
+	}
+	
+	private boolean choixOrientation(Scanner scanner) {
+		String mot = "";
+		boolean bool;
+		while(! mot.trim().equals("h") && ! mot.trim().equals("v")) {
+		    System.out.println("Quel est l'orientation du mot ? Est elle verticale ou horizontale ? (h ou v)");
+		    mot = scanner.nextLine(); 
+		}
+		bool = mot.trim().equals("h") ? true : false;
+		return bool;
 	}
 }
