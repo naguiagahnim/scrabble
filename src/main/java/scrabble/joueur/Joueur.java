@@ -34,8 +34,8 @@ public class Joueur {
     }
 
     public void placerMot(String mot, int positionx, int positiony, boolean horizontal, Plateau plateau) {
-        char[] lettres = mot.toCharArray();
         mot = mot.toUpperCase();
+    	char[] lettres = mot.toCharArray();
         boolean premierMot = plateau.estVide();
         List<Jeton> lettresUtilisees = new ArrayList<>();
         int centre = plateau.retourneTaille() / 2;
