@@ -49,11 +49,8 @@ public class Arbitre {
             int posx = choixPos(scanner,"x");
             int posy = choixPos(scanner,"y");
             boolean horizontal = choixOrientation(scanner);
-            try {
-               joueur.placerMot(mot, posx, posy, false, plateau);
-           } catch (HorsPlateauException e) {
-               System.out.println("Le mot n'est pas bien placé (depasse du plateau ou pas dans le tableau)");
-           }
+            
+            joueur.placerMot(mot, posx, posy, false, plateau);
             System.out.println(plateau.toString());
         }
    }
