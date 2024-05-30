@@ -2,7 +2,7 @@ package scrabble.application;
 
 public class ScrabbleApplicationConsole {
 	
-	public void message(String texte) {
+	public static void message(String texte) {
 		System.out.println(texte);
 	}
 	

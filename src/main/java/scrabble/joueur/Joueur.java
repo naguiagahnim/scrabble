@@ -3,6 +3,8 @@ package scrabble.joueur;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import scrabble.application.ScrabbleApplicationConsole;
 import scrabble.exceptions.HorsPlateauException;
 import scrabble.model.Chevalet;
 import scrabble.model.Jeton;
@@ -118,27 +120,27 @@ public class Joueur {
             }
 
         } catch (HorsPlateauException e) {
-            System.out.println(e.getMessage());
+            ScrabbleApplicationConsole.message(e.getMessage());
             this.retourneChevalet().retourneJetons().addAll(lettresUtilisees);
-            System.out.println("Souhaitez-vous rejouer (r) ou passer votre tour (p) ?");
+            ScrabbleApplicationConsole.message("Souhaitez-vous rejouer (r) ou passer votre tour (p) ?");
             Scanner scanner = new Scanner(System.in);
             String choix = scanner.nextLine().toLowerCase();
             if (choix.equals("p")) {
-                System.out.println("Tour passé.");
+            	ScrabbleApplicationConsole.message("Tour passé.");
                 return;
             } else if (choix.equals("r")) {
-                System.out.println("Rejouez votre tour.");
+            	ScrabbleApplicationConsole.message("Rejouez votre tour.");
             }
         }
     }
 
     public Jeton estUnJoker(Jeton jeton) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Quelles lettres voulez-vous pour le joker ?");
+        ScrabbleApplicationConsole.message("Quelles lettres voulez-vous pour le joker ?");
         String lettre = scanner.nextLine().toUpperCase();
 
         while (lettre.length() != 1 || !Character.isLetter(lettre.charAt(0))) {
-            System.out.println("Entrée invalide. Veuillez entrer une seule lettre.");
+        	ScrabbleApplicationConsole.message("Entrée invalide. Veuillez entrer une seule lettre.");
             lettre = scanner.nextLine().toUpperCase();
         }
 

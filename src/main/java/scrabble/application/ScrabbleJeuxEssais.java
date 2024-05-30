@@ -1,7 +1,6 @@
 package scrabble.application;
 
 import scrabble.controleur.Arbitre;
-import scrabble.exceptions.HorsPlateauException;
 import scrabble.joueur.Joueur;
 import scrabble.model.Chevalet;
 import scrabble.model.Jeton;
