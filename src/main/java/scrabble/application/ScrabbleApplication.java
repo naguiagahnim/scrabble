@@ -20,6 +20,7 @@ public class ScrabbleApplication extends Application {
         Parent content = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/ScrabbleView.fxml")));
         root.setCenter(content);
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/stylesheet_light.css")).toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.setTitle("Scrabble");
         primaryStage.show();
