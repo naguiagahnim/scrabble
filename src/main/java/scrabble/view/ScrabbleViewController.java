@@ -5,15 +5,14 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 import java.util.Objects;
 
 public class ScrabbleViewController {
+
     @FXML
-    private Button btnTheme;
-
-    private boolean isLightTheme = true;
-
+    private Button btnQuit;
 
     @FXML
     private void initialize() {
@@ -21,16 +20,10 @@ public class ScrabbleViewController {
     }
 
     @FXML
-    private void clicTheme(ActionEvent event) {
-        Scene scene = ((Node) event.getSource()).getScene();
-        if (isLightTheme) {
-            scene.getStylesheets().remove(Objects.requireNonNull(getClass().getResource("/stylesheet_light.css")).toExternalForm());
-            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/stylesheet_dark.css")).toExternalForm());
-        } else {
-            scene.getStylesheets().remove(Objects.requireNonNull(getClass().getResource("/stylesheet_dark.css")).toExternalForm());
-            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/stylesheet_light.css")).toExternalForm());
-        }
-        isLightTheme = !isLightTheme;
+    private void clicQuitter(ActionEvent event) {
+        Stage stage = (Stage) btnQuit.getScene().getWindow();
+        stage.close();
     }
+
 }
 
