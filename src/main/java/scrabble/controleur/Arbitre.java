@@ -50,11 +50,7 @@ public class Arbitre {
         }
         if (rep.trim().equals("1")) {
             System.out.println(joueur.retourneChevalet().retourneJetons());
-            String mot = choixMot(scanner, "Quel est le mot choisi ?");
-            int posx = choixPos(scanner, "x");
-            int posy = choixPos(scanner, "y");
-            boolean horizontal = choixOrientation(scanner);
-            joueur.placerMot(mot, posx, posy, horizontal, plateau);
+            joueur.placerMot(plateau);
             ScrabbleApplicationConsole.message(plateau.toString());
             this.remplirChevalet(sac, joueur);
         }

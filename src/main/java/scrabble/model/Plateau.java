@@ -39,6 +39,17 @@ public class Plateau {
         }
     }
 
+    public boolean CaseOccupe(int positionx, int positiony) throws HorsPlateauException {
+        try {
+            if (positionx < 0 || positionx >= TAILLE || positiony < 0 || positiony >= TAILLE) {
+                throw new HorsPlateauException("Indices de la case hors du plateau !");
+            }
+            return cases[positionx][positiony].occupe();
+        } catch (IndexOutOfBoundsException e) {
+            throw new HorsPlateauException("Les indices fournis sont trop grands ou négatifs !");
+        }
+    }
+    
     // Place un jeton sur une case
     // Renvoie vrai si la case est libre et que le jeton a été placé, faux sinon
     public boolean placerJeton(Jeton jeton, int positionx, int positiony) throws HorsPlateauException {
