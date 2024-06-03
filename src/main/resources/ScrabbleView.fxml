@@ -67,9 +67,6 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
-               <children>
-                  <Label fx:id="lblEtoile" contentDisplay="CENTER" text="*" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
-               </children>
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>
