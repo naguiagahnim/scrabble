@@ -42,16 +42,11 @@ public class Joueur {
         int centre = plateau.retourneTaille() / 2;
 
         try {
-        	int x = positionx;
-            int y = positiony;
             if (premierMot) {
                 boolean passeParCentre = false;
                 for (int i = 0; i < lettres.length; i++) {
-                    if (horizontal) {
-                        x += i;
-                    } else {
-                        y += i;
-                    }
+                    int x = horizontal ? positionx + i : positionx;
+                    int y = horizontal ? positiony : positiony + i;
                     if (x == centre && y == centre) {
                         passeParCentre = true;
                         break;
@@ -63,11 +58,8 @@ public class Joueur {
             } else {
                 boolean appuieSurLettreExistante = false;
                 for (int i = 0; i < lettres.length; i++) {
-                    if (horizontal) {
-                        x += i;
-                    } else {
-                        y += i;
-                    }
+                    int x = horizontal ? positionx + i : positionx;
+                    int y = horizontal ? positiony : positiony + i;
                     if (plateau.recupererJeton(x, y) != null) {
                         appuieSurLettreExistante = true;
                         break;
@@ -79,11 +71,8 @@ public class Joueur {
             }
 
             for (int i = 0; i < lettres.length; i++) {
-                if (horizontal) {
-                    x += i;
-                } else {
-                    y += i;
-                }
+                int x = horizontal ? positionx + i : positionx;
+                int y = horizontal ? positiony : positiony + i;
                 if (x >= plateau.retourneTaille() || y >= plateau.retourneTaille()) {
                     throw new HorsPlateauException("Le mot sort du plateau !");
                 }
@@ -105,11 +94,8 @@ public class Joueur {
             }
 
             for (int i = 0; i < lettres.length; i++) {
-                if (horizontal) {
-                    x += i;
-                } else {
-                    y += i;
-                }
+                int x = horizontal ? positionx + i : positionx;
+                int y = horizontal ? positiony : positiony + i;
                 for (Jeton jeton : this.retourneChevalet().retourneJetons()) {
                     if (jeton.toString().charAt(0) == lettres[i]) {
                         lettresUtilisees.add(jeton);
@@ -126,10 +112,10 @@ public class Joueur {
             Scanner scanner = new Scanner(System.in);
             String choix = scanner.nextLine().toLowerCase();
             if (choix.equals("p")) {
-            	ScrabbleApplicationConsole.message("Tour passé.");
+                ScrabbleApplicationConsole.message("Tour passé.");
                 return;
             } else if (choix.equals("r")) {
-            	ScrabbleApplicationConsole.message("Rejouez votre tour.");
+                ScrabbleApplicationConsole.message("Rejouez votre tour.");
             }
         }
     }
@@ -140,7 +126,7 @@ public class Joueur {
         String lettre = scanner.nextLine().toUpperCase();
 
         while (lettre.length() != 1 || !Character.isLetter(lettre.charAt(0))) {
-        	ScrabbleApplicationConsole.message("Entrée invalide. Veuillez entrer une seule lettre.");
+            ScrabbleApplicationConsole.message("Entrée invalide. Veuillez entrer une seule lettre.");
             lettre = scanner.nextLine().toUpperCase();
         }
 
