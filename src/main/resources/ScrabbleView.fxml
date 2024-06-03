@@ -80,7 +80,7 @@
             </VBox>
          </right>
       </BorderPane>
-      <GridPane alignment="TOP_CENTER" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: grey;">
+      <GridPane alignment="TOP_CENTER" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #e5ce8b;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
