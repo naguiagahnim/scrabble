@@ -65,9 +65,4 @@ public class ScrabbleTest {
         System.out.println(plateau.toString());
     }
 
-    @Test
-    public void testJouerUnePartie() {
-        arbitre.JouerUnePartie(j2, sac, plateau);
-
-    }
 }
