@@ -37,6 +37,8 @@ public class Joueur {
     public void placerMot(Plateau plateau) {
         Scanner scanner = new Scanner(System.in);
         List<Jeton> lettresUtilisees = new ArrayList<>();
+        boolean premierMot = plateau.estVide();
+        boolean appuieSurLettreExistante = false;
 
         ScrabbleApplicationConsole.message("Entrez les lettres une par une avec leurs coordonnées.");
         while (true) {
@@ -73,11 +75,35 @@ public class Joueur {
                 if (posx >= plateau.retourneTaille() || posy >= plateau.retourneTaille()) {
                     throw new HorsPlateauException("La lettre sort du plateau !");
                 }
-                if (plateau.CaseOccupe(posx,posy)) {
-                    throw new HorsPlateauException("Il est impossible de placer une lettre sur une case occupée !");
+                
+                // Vérification si le mot est basé sur un mot existant (sauf si c'est le premier mot)
+                if (!premierMot) {
+                    if (plateau.CaseOccupe(posx, posy)) {
+                        if (plateau.recupererJeton(posx, posy).toString().charAt(0) != charLettre) {
+                            throw new HorsPlateauException("Il est impossible de placer une lettre différente sur une case occupée !");
+                        }
+                    } else {
+                        boolean lettreAdjacente = false;
+                        if ((posx > 0 && plateau.CaseOccupe(posx - 1, posy)) || 
+                            (posx < plateau.retourneTaille() - 1 && plateau.CaseOccupe(posx + 1, posy)) || 
+                            (posy > 0 && plateau.CaseOccupe(posx, posy - 1)) || 
+                            (posy < plateau.retourneTaille() - 1 && plateau.CaseOccupe(posx, posy + 1))) {
+                            lettreAdjacente = true;
+                        }
+                        if (!lettreAdjacente) {
+                            throw new HorsPlateauException("Les mots suivants doivent s'appuyer sur une lettre existante !");
+                        }
+                    }
+                } else {
+                    int centre = plateau.retourneTaille() / 2;
+                    if (posx != centre || posy != centre) {
+                        throw new HorsPlateauException("Le premier mot doit passer par le centre du plateau !");
+                    }
                 }
+
                 this.placerLettre(jeton, posx, posy, plateau);
                 lettresUtilisees.add(jeton);
+                appuieSurLettreExistante = true;
             } catch (HorsPlateauException e) {
                 ScrabbleApplicationConsole.message(e.getMessage());
             }
@@ -85,6 +111,10 @@ public class Joueur {
 
         if (lettresUtilisees.isEmpty()) {
             ScrabbleApplicationConsole.message("Aucune lettre placée.");
+        } else if (!premierMot && !appuieSurLettreExistante) {
+            // Si ce n'est pas le premier mot et que les lettres placées ne sont pas adjacentes à des lettres existantes
+            ScrabbleApplicationConsole.message("Les lettres doivent être adjacentes à des lettres existantes.");
+            this.retourneChevalet().retourneJetons().addAll(lettresUtilisees);
         }
     }
 
