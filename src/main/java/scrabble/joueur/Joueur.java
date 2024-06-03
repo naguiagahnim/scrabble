@@ -34,89 +34,57 @@ public class Joueur {
         }
     }
 
-    public void placerMot(String mot, int positionx, int positiony, boolean horizontal, Plateau plateau) {
-        mot = mot.toUpperCase();
-        char[] lettres = mot.toCharArray();
-        boolean premierMot = plateau.estVide();
+    public void placerMot(Plateau plateau) {
+        Scanner scanner = new Scanner(System.in);
         List<Jeton> lettresUtilisees = new ArrayList<>();
-        int centre = plateau.retourneTaille() / 2;
 
-        try {
-            if (premierMot) {
-                boolean passeParCentre = false;
-                for (int i = 0; i < lettres.length; i++) {
-                    int x = horizontal ? positionx + i : positionx;
-                    int y = horizontal ? positiony : positiony + i;
-                    if (x == centre && y == centre) {
-                        passeParCentre = true;
-                        break;
-                    }
-                }
-                if (!passeParCentre) {
-                    throw new HorsPlateauException("Le premier mot doit passer par le centre du plateau !");
-                }
-            } else {
-                boolean appuieSurLettreExistante = false;
-                for (int i = 0; i < lettres.length; i++) {
-                    int x = horizontal ? positionx + i : positionx;
-                    int y = horizontal ? positiony : positiony + i;
-                    if (plateau.recupererJeton(x, y) != null) {
-                        appuieSurLettreExistante = true;
-                        break;
-                    }
-                }
-                if (!appuieSurLettreExistante) {
-                    throw new HorsPlateauException("Les mots suivants doivent s'appuyer sur une lettre existante !");
-                }
+        ScrabbleApplicationConsole.message("Entrez les lettres une par une avec leurs coordonnées.");
+        while (true) {
+            ScrabbleApplicationConsole.message("Entrez une lettre (ou appuyez sur '0' pour terminer) :");
+            String lettre = scanner.nextLine().toUpperCase();
+            if (lettre.equals("0")) {
+                break;
+            }
+            if (lettre.length() != 1 || !Character.isLetter(lettre.charAt(0))) {
+                ScrabbleApplicationConsole.message("Entrée invalide. Veuillez entrer une seule lettre.");
+                continue;
             }
 
-            for (int i = 0; i < lettres.length; i++) {
-                int x = horizontal ? positionx + i : positionx;
-                int y = horizontal ? positiony : positiony + i;
-                if (x >= plateau.retourneTaille() || y >= plateau.retourneTaille()) {
-                    throw new HorsPlateauException("Le mot sort du plateau !");
+            char charLettre = lettre.charAt(0);
+            Jeton jeton = null;
+            for (Jeton j : this.retourneChevalet().retourneJetons()) {
+                if (j.toString().charAt(0) == charLettre) {
+                    jeton = j;
+                    break;
                 }
+            }
+            if (jeton == null) {
+                ScrabbleApplicationConsole.message("Jeton non disponible dans votre chevalet.");
+                continue;
+            }
 
-                boolean trouveJeton = false;
-                for (Jeton jeton : this.retourneChevalet().retourneJetons()) {
-                    if (jeton.name().charAt(0) == lettres[i]) {
-                        trouveJeton = true;
-                        break;
-                    }
+            ScrabbleApplicationConsole.message("Entrez la position x de la lettre :");
+            int posx = scanner.nextInt();
+            ScrabbleApplicationConsole.message("Entrez la position y de la lettre :");
+            int posy = scanner.nextInt();
+            scanner.nextLine(); // Consommer la nouvelle ligne
+
+            try {
+                if (posx >= plateau.retourneTaille() || posy >= plateau.retourneTaille()) {
+                    throw new HorsPlateauException("La lettre sort du plateau !");
                 }
-                if (!trouveJeton) {
-                    throw new HorsPlateauException("Le joueur n'a pas tous les jetons nécessaires pour former ce mot !");
-                }
-                
-                if (!premierMot && plateau.recupererJeton(x, y) != null) {
+                if (plateau.CaseOccupe(posx,posy)) {
                     throw new HorsPlateauException("Il est impossible de placer une lettre sur une case occupée !");
                 }
+                this.placerLettre(jeton, posx, posy, plateau);
+                lettresUtilisees.add(jeton);
+            } catch (HorsPlateauException e) {
+                ScrabbleApplicationConsole.message(e.getMessage());
             }
+        }
 
-            for (int i = 0; i < lettres.length; i++) {
-                int x = horizontal ? positionx + i : positionx;
-                int y = horizontal ? positiony : positiony + i;
-                for (Jeton jeton : this.retourneChevalet().retourneJetons()) {
-                    if (jeton.toString().charAt(0) == lettres[i]) {
-                        lettresUtilisees.add(jeton);
-                        this.placerLettre(jeton, x, y, plateau);
-                        break;
-                    }
-                }
-            }
-
-        } catch (HorsPlateauException e) {
-            ScrabbleApplicationConsole.message(e.getMessage());
-            this.retourneChevalet().retourneJetons().addAll(lettresUtilisees);
-            ScrabbleApplicationConsole.message("Souhaitez-vous rejouer (r) ou passer votre tour (p) ?");
-            Scanner scanner = new Scanner(System.in);
-            String choix = scanner.nextLine().toLowerCase();
-            if (choix.equals("p")) {
-                ScrabbleApplicationConsole.message("Tour passé.");
-                return;
-            } else if (choix.equals("r")) {
-                ScrabbleApplicationConsole.message("Rejouez votre tour.");
-            }
+        if (lettresUtilisees.isEmpty()) {
+            ScrabbleApplicationConsole.message("Aucune lettre placée.");
         }
     }
 
