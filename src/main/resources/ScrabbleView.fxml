@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scrabble.view.ScrabbleViewController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="950.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scrabble.view.ScrabbleViewController">
    <children>
       <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-spacing: 800;">
          <items>
@@ -32,7 +32,7 @@
             </VBox>
          </left>
          <center>
-            <GridPane fx:id="grillePlateau" alignment="CENTER" maxHeight="550.0" maxWidth="800.0" minHeight="550.0" minWidth="800.0" prefHeight="550.0" prefWidth="800.0" style="-fx-grid-lines-visible: true; -fx-background-color: #15733a;" BorderPane.alignment="CENTER">
+            <GridPane fx:id="grillePlateau" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" style="-fx-grid-lines-visible: true; -fx-background-color: #15733a;" BorderPane.alignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -80,7 +80,7 @@
             </VBox>
          </right>
       </BorderPane>
-      <GridPane alignment="TOP_CENTER" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #e5ce8b; -fx-grid-lines-visible: true;">
+      <GridPane alignment="TOP_CENTER" prefHeight="150.0" prefWidth="100.0" style="-fx-background-color: #e5ce8b; -fx-grid-lines-visible: true;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

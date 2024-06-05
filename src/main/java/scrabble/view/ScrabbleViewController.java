@@ -53,7 +53,7 @@ public class ScrabbleViewController {
                 if (row == 7 && col == 7) {
                     label = new Label("*");
                 } else {
-                    label = new Label(row + "_" + col);
+                    label = new Label();
                 }
                 label.setId("lbl" + row + "_" + col);
                 grillePlateau.add(label, col, row);
@@ -68,6 +68,4 @@ public class ScrabbleViewController {
         Stage stage = (Stage) btnQuit.getScene().getWindow();
         stage.close();
     }
-
 }
-
