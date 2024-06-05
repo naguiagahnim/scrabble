@@ -28,7 +28,7 @@ public class Plateau {
 
     // Récupère une case en fonction de ses coordonnées
     // Renvoie la case si les coordonnées sont valides, sinon renvoie l'exception métier HorsPlateauException
-    public Case recupererJeton(int positionx, int positiony) throws HorsPlateauException {
+    public Case recupererCase(int positionx, int positiony) throws HorsPlateauException {
         try {
             if (positionx < 0 || positionx >= TAILLE || positiony < 0 || positiony >= TAILLE) {
                 throw new HorsPlateauException("Indices de la case hors du plateau !");
@@ -53,7 +53,7 @@ public class Plateau {
     // Place un jeton sur une case
     // Renvoie vrai si la case est libre et que le jeton a été placé, faux sinon
     public boolean placerJeton(Jeton jeton, int positionx, int positiony) throws HorsPlateauException {
-        Case case1 = recupererJeton(positionx, positiony);
+        Case case1 = recupererCase(positionx, positiony);
         if (!case1.occupe()) {
             case1.metUnJeton(jeton);
             return true;
@@ -63,7 +63,7 @@ public class Plateau {
 
     // Retire le jeton d'une case
     public void retirerJeton(int positionx, int positiony) throws HorsPlateauException {
-        Case case1 = recupererJeton(positionx, positiony);
+        Case case1 = recupererCase(positionx, positiony);
         if (case1.occupe()) {
             case1.metUnJeton(null);
         }
