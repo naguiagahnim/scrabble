@@ -12,6 +12,7 @@ import scrabble.model.Jeton;
 import scrabble.model.Plateau;
 
 public class Joueur {
+    private Integer score;
     private Chevalet chevalet;
     int TailleChevalet = Constant.retourneNbJetonsChevalet();
     public Chevalet retourneChevalet() {
@@ -20,6 +21,7 @@ public class Joueur {
 
     public Joueur(Chevalet chevalet) {
         this.chevalet = chevalet;
+        this.score = 0;
     }
 
     public void placerLettre(Jeton jeton, int positionx, int positiony, Plateau plateau) throws HorsPlateauException {
@@ -36,6 +38,7 @@ public class Joueur {
     }
 
     public void placerMot(Plateau plateau) {
+        Integer ptsMot = 0;
         Scanner scanner = new Scanner(System.in);
         List<Jeton> lettresUtilisees = new ArrayList<>();
         boolean premierMot = plateau.estVide();
@@ -137,8 +140,12 @@ public class Joueur {
             		int x = posx + (horizontal ? 0 : i);
             		int y = posy + (horizontal ? i : 0);
             		this.placerLettre(jeton, x, y, plateau);
+                    ptsMot += jeton.valeur();
+                    this.score = this.score + jeton.valeur();
             		i = i+1;
             	}
+                ScrabbleApplicationConsole.message("Le mot vaut " + ptsMot + " points !");
+                ScrabbleApplicationConsole.message("Score du joueur : " + this.score);
             }	
         } catch (HorsPlateauException e) {
             ScrabbleApplicationConsole.message(e.getMessage());
@@ -155,7 +162,7 @@ public class Joueur {
 
     public Jeton estUnJoker(Jeton jeton) {
         Scanner scanner = new Scanner(System.in);
-        ScrabbleApplicationConsole.message("Quelles lettres voulez-vous pour le joker ?");
+        ScrabbleApplicationConsole.message("Quelle lettre voulez-vous pour le joker ?");
         String lettre = scanner.nextLine().toUpperCase();
 
         while (lettre.length() != 1 || !Character.isLetter(lettre.charAt(0))) {
@@ -169,5 +176,9 @@ public class Joueur {
         this.retourneChevalet().retourneJetons().add(nouveauJeton);
 
         return nouveauJeton;
+    }
+
+    public Integer retourneScore(){
+        return this.score;
     }
 }
