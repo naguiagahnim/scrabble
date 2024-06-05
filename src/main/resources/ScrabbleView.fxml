@@ -94,13 +94,13 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="lettreChevalet1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Label fx:id="lettreChevalet2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Label fx:id="lettreChevalet3" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Label fx:id="lettreChevalet4" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Label fx:id="lettreChevalet5" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Label fx:id="lettreChevalet6" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Label fx:id="lettreChevalet7" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Label fx:id="lettreChevalet1" style="-fx-font-weight: bold; -fx-font-size: 30;" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Label fx:id="lettreChevalet2" style="-fx-font-weight: bold; -fx-font-size: 30;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Label fx:id="lettreChevalet3" style="-fx-font-weight: bold; -fx-font-size: 30;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Label fx:id="lettreChevalet4" style="-fx-font-weight: bold; -fx-font-size: 30;" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Label fx:id="lettreChevalet5" style="-fx-font-weight: bold; -fx-font-size: 30;" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Label fx:id="lettreChevalet6" style="-fx-font-weight: bold; -fx-font-size: 30;" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Label fx:id="lettreChevalet7" style="-fx-font-weight: bold; -fx-font-size: 30;" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
          </children>
          <opaqueInsets>
             <Insets />

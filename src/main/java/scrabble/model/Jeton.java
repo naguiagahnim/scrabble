@@ -39,7 +39,6 @@ public enum Jeton {
 	public int valeur() {
 		return this.valeur;
 	}
-	public void defValeur(int valeur) {
-		this.valeur = valeur;
-	}
+
+	
 }

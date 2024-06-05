@@ -17,7 +17,7 @@ public class ScrabbleJeuxEssais {
 		Joueur j1 = new Joueur(chevalet1);
 		Joueur j2 = new Joueur(chevalet2);
 		Arbitre arbitre = new Arbitre();
-		sac.remplirJeuFrançais();
+		sac.remplirJeuFrancais();
 		System.out.println("Avant de mélanger");
 		System.out.println(sac.retourneJetons());
 		sac.melanger();

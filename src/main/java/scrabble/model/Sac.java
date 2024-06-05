@@ -36,7 +36,7 @@ public class Sac {
 	public void melanger() {
 		Collections.shuffle(jetons);
 	}
-	public void remplirJeuFrançais() {
+	public void remplirJeuFrancais() {
 		for (int i=0;i<15;i++)	{
 			this.ajout1Jeton(Jeton.E);
 		}
