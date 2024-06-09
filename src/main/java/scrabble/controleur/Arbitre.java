@@ -31,6 +31,7 @@ public class Arbitre {
     }
 
     public void JouerUnePartie(Joueur joueur, Sac sac, Plateau plateau) {
+    	joueur.defScore(0);
         boolean finPartie = false;
         while (!finPartie) {
             finPartie = this.jouerUnTour(joueur, sac, plateau);
