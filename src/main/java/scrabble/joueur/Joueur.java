@@ -1,5 +1,6 @@
 package scrabble.joueur;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -15,6 +16,7 @@ public class Joueur {
     private Integer score;
     private Chevalet chevalet;
     int TailleChevalet = Constant.retourneNbJetonsChevalet();
+
     public Chevalet retourneChevalet() {
         return this.chevalet;
     }
@@ -135,6 +137,7 @@ public class Joueur {
             }
             int i = 0;
             if (lettreValide) {
+                List<int[]> positions = new ArrayList<>();
             	for (Jeton jeton : lettresUtilisees) {
             		int x = posx + (horizontal ? 0 : i);
             		int y = posy + (horizontal ? i : 0);
@@ -146,9 +149,22 @@ public class Joueur {
             		this.placerLettre(jeton, x, y, plateau);
                     ptsMot += jeton.valeur();
                     this.score = this.score + jeton.valeur();
+                    positions.add(new int[]{x, y});
             		i = i + 1;
             	}
                 ScrabbleApplicationConsole.message("Le mot vaut " + ptsMot + " points !");
+                
+                // Calcul des points des mots croisés
+                for (int[] pos : positions) {
+                    int x = pos[0];
+                    int y = pos[1];
+                    int ptsCroise = calculerPointsMotsCroises(x, y, plateau, horizontal);
+                    this.score += ptsCroise;
+                    if (ptsCroise > 0) {
+                        ScrabbleApplicationConsole.message("Un mot croisé vaut " + ptsCroise + " points !");
+                    }
+                }
+
                 ScrabbleApplicationConsole.message("Score du joueur : " + this.score);
             }	
         } catch (HorsPlateauException e) {
@@ -173,9 +189,64 @@ public class Joueur {
         return nouveauJeton;
     }
 
+    private int calculerPointsMotsCroises(int x, int y, Plateau plateau, boolean horizontal) {
+        int points = 0;
+        if (horizontal) {
+            points += calculerPointsMotVertical(x, y, plateau);
+        } else {
+            points += calculerPointsMotHorizontal(x, y, plateau);
+        }
+        return points;
+    }
+
+    private int calculerPointsMotHorizontal(int x, int y, Plateau plateau) {
+        int points = 0;
+        int start = y;
+        try {
+        while (start > 0 && plateau.CaseOccupe(x, start - 1)) {
+            start--;
+        }
+        int end = y;
+        while (end < plateau.retourneTaille() - 1 && plateau.CaseOccupe(x, end + 1)) {
+            end++;
+        }
+        if (start != end) {
+            for (int i = start; i <= end; i++) {
+                points += plateau.recupererCase(x, i).retourneJeton().valeur();
+            }
+        }
+        } catch (HorsPlateauException e) {
+        	ScrabbleApplicationConsole.message("Problème de coordonnées");
+        }
+        return points;
+    }
+
+    private int calculerPointsMotVertical(int x, int y, Plateau plateau) {
+        int points = 0;
+        int start = x;
+        try {
+        while (start > 0 && plateau.CaseOccupe(start - 1, y)) {
+            start--;
+        }
+        int end = x;
+        while (end < plateau.retourneTaille() - 1 && plateau.CaseOccupe(end + 1, y)) {
+            end++;
+        }
+        if (start != end) {
+            for (int i = start; i <= end; i++) {
+                points += plateau.recupererCase(i, y).retourneJeton().valeur();
+            }
+        }
+    	} catch (HorsPlateauException e) {
+    	ScrabbleApplicationConsole.message("Problème de coordonnées");
+    	}
+        return points;
+    }
+
     public Integer retourneScore(){
         return this.score;
     }
+    
     public void defScore(int score) {
     	this.score = score;
     }
