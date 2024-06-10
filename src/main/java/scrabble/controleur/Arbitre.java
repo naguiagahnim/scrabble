@@ -114,15 +114,3 @@ public class Arbitre {
 		}
 	}
 }
-
-    private boolean choixOrientation(Scanner scanner) {
-        String mot = "";
-        boolean bool;
-        while (!mot.trim().equals("h") && !mot.trim().equals("v")) {
-            System.out.println("Quel est l'orientation du mot ? Est-elle verticale ou horizontale ? (h ou v)");
-            mot = scanner.nextLine();
-        }
-        bool = mot.trim().equals("h");
-        return bool;
-    }
-}
