@@ -12,8 +12,11 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import scrabble.controleur.Arbitre;
 import scrabble.joueur.Joueur;
 import scrabble.model.Jeton;
+import scrabble.model.Plateau;
+import scrabble.model.Sac;
 
 import java.util.List;
 
@@ -47,10 +50,25 @@ public class ScrabbleViewController {
     private Button btnQuit;
 
     private Joueur joueur;
+    private Arbitre arbitre;
+    private Sac sac;
+    private Plateau plateau;
 
     public void setJoueur(Joueur joueur) {
         this.joueur = joueur;
         afficherLettresChevalet();
+    }
+
+    public void setArbitre(Arbitre arbitre) {
+        this.arbitre = arbitre;
+    }
+
+    public void setSac(Sac sac) {
+        this.sac = sac;
+    }
+
+    public void setPlateau(Plateau plateau) {
+        this.plateau = plateau;
     }
 
     private void afficherLettresChevalet() {

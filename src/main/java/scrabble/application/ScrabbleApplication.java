@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import scrabble.controleur.Arbitre;
 import scrabble.joueur.Joueur;
@@ -16,34 +15,36 @@ import scrabble.view.ScrabbleViewController;
 import java.util.Objects;
 
 public class ScrabbleApplication extends Application {
-    public static void main(String[] args){
-        //Lancement de l'interface
+    public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        //Initialisation des variables nécessaires
+        // Initialisation des variables nécessaires
         Arbitre arbitre = new Arbitre();
         Sac sac = new Sac();
         Plateau plateau = new Plateau();
         Chevalet chevaletj1 = new Chevalet();
         Joueur j1 = new Joueur(chevaletj1);
 
-        //On remplit le sac, qu'on mélange ensuite
+        // Remplir et mélanger le sac
         sac.remplirJeuFrancais();
         sac.melanger();
 
-        //On remplit ensuite le chevalet du joueur
+        // Remplir le chevalet du joueur
         arbitre.remplirChevalet(sac, j1);
 
-        //Init interface
-        BorderPane root = new BorderPane();
+        // Charger l'interface
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ScrabbleView.fxml"));
-        Parent content = loader.load();
+        Parent root = loader.load();
         ScrabbleViewController controller = loader.getController();
         controller.setJoueur(j1);
-        root.setCenter(content);
+        controller.setArbitre(arbitre);
+        controller.setSac(sac);
+        controller.setPlateau(plateau);
+
+        // Configurer et afficher la scène
         Scene scene = new Scene(root);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/stylesheet_light.css")).toExternalForm());
         primaryStage.setScene(scene);
