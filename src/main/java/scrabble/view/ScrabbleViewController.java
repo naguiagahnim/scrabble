@@ -7,6 +7,7 @@ import javafx.geometry.VPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
@@ -18,7 +19,9 @@ import scrabble.model.Jeton;
 import scrabble.model.Plateau;
 import scrabble.model.Sac;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ScrabbleViewController {
 
@@ -49,16 +52,12 @@ public class ScrabbleViewController {
     @FXML
     private Button btnQuit;
 
-    @FXML
-    private Label scoretotal1;
-
-    @FXML
-    private Label scoretotal2;
-
     private Joueur joueur;
     private Arbitre arbitre;
     private Sac sac;
     private Plateau plateau;
+
+    private Map<StackPane, Boolean> stackPaneStates = new HashMap<>(); // Stocke l'état de chaque StackPane
 
     public void setJoueur(Joueur joueur) {
         this.joueur = joueur;
@@ -108,6 +107,9 @@ public class ScrabbleViewController {
                 grillePlateau.add(stackPane, col, row);
                 GridPane.setHalignment(stackPane, HPos.CENTER);
                 GridPane.setValignment(stackPane, VPos.CENTER);
+
+                // Initialiser l'état de chaque StackPane à false
+                stackPaneStates.put(stackPane, false);
             }
         }
     }
@@ -119,34 +121,26 @@ public class ScrabbleViewController {
             content.putString(label.getText());
             db.setContent(content);
 
-            label.setOpacity(0.5);
-
-            event.consume();
-        });
-
-        label.setOnDragDone(event -> {
-            label.setOpacity(1.0);
-
             event.consume();
         });
     }
 
     private void setDropEvents(StackPane stackPane) {
         stackPane.setOnDragOver(event -> {
-            if (event.getGestureSource() != stackPane && event.getDragboard().hasString()) {
+            if (event.getGestureSource() != stackPane && event.getDragboard().hasString() && !stackPane.getStyle().contains("-fx-background-color: #e5ce8b")) {
                 event.acceptTransferModes(TransferMode.MOVE);
             }
             event.consume();
         });
 
         stackPane.setOnDragEntered(event -> {
-            if (event.getGestureSource() != stackPane && event.getDragboard().hasString()) {
+            if (!stackPaneStates.get(stackPane) && event.getGestureSource() != stackPane && event.getDragboard().hasString()) {
                 stackPane.setStyle("-fx-background-color: lightblue;");
             }
         });
 
         stackPane.setOnDragExited(event -> {
-            if (event.getGestureSource() == null) {
+            if (!stackPaneStates.get(stackPane)) {
                 stackPane.setStyle("-fx-background-color: #15733a;");
             }
         });
@@ -156,16 +150,20 @@ public class ScrabbleViewController {
             boolean success = false;
             if (db.hasString()) {
                 Label label = (Label) stackPane.getChildren().get(0);
-                label.setText(db.getString());
-                //TODO arbitre.enleverJeton(sac, joueur, );
-                stackPane.setStyle("-fx-background-color: #e5ce8b;");
-                success = true;
+                if (!stackPane.getStyle().contains("-fx-background-color: #e5ce8b")) { // Vérifier si le fond est différent de #e5ce8b
+                    label.setText(db.getString());
+                    stackPane.setStyle("-fx-background-color: #e5ce8b;");
+                    stackPaneStates.put(stackPane, true); // Mettre à jour l'état de la StackPane
+                    success = true;
+                }
             }
             event.setDropCompleted(success);
             event.consume();
         });
 
         stackPane.setOnDragDone(event -> {
+            // Réinitialiser l'état de chaque StackPane à false après chaque drag-and-drop
+            stackPaneStates.replaceAll((sPane, value) -> false);
             event.consume();
         });
     }
