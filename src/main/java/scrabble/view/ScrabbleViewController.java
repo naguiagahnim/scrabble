@@ -157,6 +157,7 @@ public class ScrabbleViewController {
             if (db.hasString()) {
                 Label label = (Label) stackPane.getChildren().get(0);
                 label.setText(db.getString());
+                //TODO arbitre.enleverJeton(sac, joueur, );
                 stackPane.setStyle("-fx-background-color: #e5ce8b;");
                 success = true;
             }

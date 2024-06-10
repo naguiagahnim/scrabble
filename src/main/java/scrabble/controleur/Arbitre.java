@@ -87,14 +87,33 @@ public class Arbitre {
         return mot;
     }
 
-    private int choixPos(Scanner scanner, String axe) {
-        int pos = -1;
-        while (pos < 0 || pos > 14) {
-            System.out.println("Quel est la position " + axe + " du mot choisi (de 0 à 14)");
-            pos = scanner.nextInt();
-        }
-        return pos;
-    }
+	private int choixPos(Scanner scanner, String axe) {
+		int pos = -1;
+		while(pos < 0 || pos > 14) {
+		    System.out.println("Quel est la position " + axe + " du mot choisi (de 0 à 14)");
+		    pos = scanner.nextInt(); 
+		}
+		return pos;
+	}
+	
+	private boolean choixOrientation(Scanner scanner) {
+		String mot = "";
+		boolean bool;
+		while(! mot.trim().equals("h") && ! mot.trim().equals("v")) {
+		    System.out.println("Quel est l'orientation du mot ? Est elle verticale ou horizontale ? (h ou v)");
+		    mot = scanner.nextLine(); 
+		}
+		bool = mot.trim().equals("h");
+		return bool;
+	}
+
+	public void enleverJeton(Sac sac, Joueur joueur, Jeton jeton) {
+		joueur.retourneChevalet().retourneJetons().remove(jeton);
+		if(!sac.retourneJetons().isEmpty()){
+			joueur.retourneChevalet().retourneJetons().add(sac.tirerJeton());
+		}
+	}
+}
 
     private boolean choixOrientation(Scanner scanner) {
         String mot = "";
