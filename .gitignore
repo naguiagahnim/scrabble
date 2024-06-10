@@ -1,4 +1,8 @@
 /target/
+<<<<<<< Updated upstream
 /.classpath
 /.project
 /.settings
+=======
+>>>>>>> Stashed changes
+/bin/
