@@ -3,7 +3,9 @@ package scrabble;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scrabble.controleur.Arbitre;
+import scrabble.exceptions.HorsPlateauException;
 import scrabble.joueur.Joueur;
+import scrabble.model.Case;
 import scrabble.model.Chevalet;
 import scrabble.model.Jeton;
 import scrabble.model.Plateau;
@@ -46,9 +48,10 @@ public class ScrabbleTest {
 
     @Test
     public void testRemplirChevaletEtEchanger() {
+    	int nbJeton = sac.retourneJetons().size();
         arbitre.remplirChevalet(sac, j1);
         assertFalse(j1.retourneChevalet().retourneJetons().isEmpty());
-        assertTrue(sac.retourneJetons().size() < sac.retourneJetons().size());
+        assertTrue(nbJeton > sac.retourneJetons().size());
 
         arbitre.remplirChevalet(sac, j2);
         assertFalse(j2.retourneChevalet().retourneJetons().isEmpty());
