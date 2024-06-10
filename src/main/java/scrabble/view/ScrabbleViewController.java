@@ -7,10 +7,10 @@ import javafx.geometry.VPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import scrabble.controleur.Arbitre;
 import scrabble.joueur.Joueur;
@@ -49,6 +49,12 @@ public class ScrabbleViewController {
     @FXML
     private Button btnQuit;
 
+    @FXML
+    private Label scoretotal1;
+
+    @FXML
+    private Label scoretotal2;
+
     private Joueur joueur;
     private Arbitre arbitre;
     private Sac sac;
@@ -77,7 +83,7 @@ public class ScrabbleViewController {
 
         for (int i = 0; i < jetons.size() && i < labels.length; i++) {
             labels[i].setText(jetons.get(i).name().substring(0, 1)); // Utilisation du nom de l'énumérateur
-            setDragEvents(labels[i]); // Configure le drag and drop pour chaque lettre du chevalet
+            setDragEvents(labels[i]);
         }
     }
 
@@ -88,6 +94,7 @@ public class ScrabbleViewController {
 
         for (int row = 0; row < numRows; row++) {
             for (int col = 0; col < numCols; col++) {
+                StackPane stackPane = new StackPane();
                 Label label;
                 if (row == 7 && col == 7) {
                     label = new Label("*");
@@ -95,11 +102,12 @@ public class ScrabbleViewController {
                     label = new Label("");
                 }
                 label.setId("lbl" + row + "_" + col);
-                label.setStyle("-fx-font-weight: bold; -fx-font-size: 20; -fx-background-color: white;"); // Set default background color
-                setDropEvents(label); // Configure le drop pour chaque case du plateau
-                grillePlateau.add(label, col, row);
-                GridPane.setHalignment(label, HPos.CENTER);
-                GridPane.setValignment(label, VPos.CENTER);
+                label.setStyle("-fx-font-weight: bold; -fx-font-size: 20;");
+                setDropEvents(stackPane);
+                stackPane.getChildren().add(label);
+                grillePlateau.add(stackPane, col, row);
+                GridPane.setHalignment(stackPane, HPos.CENTER);
+                GridPane.setValignment(stackPane, VPos.CENTER);
             }
         }
     }
@@ -110,42 +118,57 @@ public class ScrabbleViewController {
             ClipboardContent content = new ClipboardContent();
             content.putString(label.getText());
             db.setContent(content);
+
+            label.setOpacity(0.5);
+
+            event.consume();
+        });
+
+        label.setOnDragDone(event -> {
+            label.setOpacity(1.0);
+
             event.consume();
         });
     }
 
-    private void setDropEvents(Label label) {
-        label.setOnDragOver(event -> {
-            if (event.getGestureSource() != label && event.getDragboard().hasString()) {
+    private void setDropEvents(StackPane stackPane) {
+        stackPane.setOnDragOver(event -> {
+            if (event.getGestureSource() != stackPane && event.getDragboard().hasString()) {
                 event.acceptTransferModes(TransferMode.MOVE);
             }
             event.consume();
         });
 
-        label.setOnDragEntered(event -> {
-            if (event.getGestureSource() != label && event.getDragboard().hasString()) {
-                label.setStyle("-fx-background-color: lightblue;"); // Change background color when dragged over
+        stackPane.setOnDragEntered(event -> {
+            if (event.getGestureSource() != stackPane && event.getDragboard().hasString()) {
+                stackPane.setStyle("-fx-background-color: lightblue;");
             }
         });
 
-        label.setOnDragExited(event -> {
-            label.setStyle("-fx-background-color: white;"); // Revert to default background color
+        stackPane.setOnDragExited(event -> {
+            if (event.getGestureSource() == null) {
+                stackPane.setStyle("-fx-background-color: #15733a;");
+            }
         });
 
-        label.setOnDragDropped(event -> {
+        stackPane.setOnDragDropped(event -> {
             Dragboard db = event.getDragboard();
             boolean success = false;
             if (db.hasString()) {
+                Label label = (Label) stackPane.getChildren().get(0);
                 label.setText(db.getString());
-                label.setStyle("-fx-background-color: lightgreen;"); // Change background color when dropped
+                stackPane.setStyle("-fx-background-color: #e5ce8b;");
                 success = true;
             }
             event.setDropCompleted(success);
             event.consume();
         });
 
-        label.setOnDragDone(DragEvent::consume);
+        stackPane.setOnDragDone(event -> {
+            event.consume();
+        });
     }
+
 
     @FXML
     private void clicQuitter(ActionEvent event) {

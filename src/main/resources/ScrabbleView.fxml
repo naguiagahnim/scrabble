@@ -27,7 +27,8 @@
             <left>
                 <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-weight: bold;" text="Score" textAlignment="CENTER" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-weight: bold;" text="Score J1" textAlignment="CENTER" />
+                  <Label fx:id="scoretotal1" />
                     </children>
                 </VBox>
             </left>
@@ -75,7 +76,8 @@
             <right>
                 <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-weight: bold;" text="Score" textAlignment="CENTER" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-weight: bold;" text="Score J2" textAlignment="CENTER" />
+                  <Label fx:id="scoretotal2" />
                     </children>
                 </VBox>
             </right>
