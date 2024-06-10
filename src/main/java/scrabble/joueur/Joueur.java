@@ -43,9 +43,9 @@ public class Joueur {
         boolean premierMot = plateau.estVide();
 
         ScrabbleApplicationConsole.message("Entrez les coordonnées de la première lettre et son orientation.");
-        ScrabbleApplicationConsole.message("Entrez la position x de la lettre :");
+        ScrabbleApplicationConsole.message("Entrez la position x de la lettre : (de 0 à 14)");
         int posx = scanner.nextInt();
-        ScrabbleApplicationConsole.message("Entrez la position y de la lettre :");
+        ScrabbleApplicationConsole.message("Entrez la position y de la lettre : (de 0 à 14)");
         int posy = scanner.nextInt();
         String orientation = "";
         while (!orientation.trim().equals("v") && !orientation.trim().equals("h")) {

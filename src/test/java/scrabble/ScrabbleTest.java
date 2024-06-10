@@ -2,6 +2,8 @@ package scrabble;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import scrabble.application.ScrabbleApplicationConsole;
 import scrabble.controleur.Arbitre;
 import scrabble.exceptions.HorsPlateauException;
 import scrabble.joueur.Joueur;
@@ -31,7 +33,7 @@ public class ScrabbleTest {
         j1 = new Joueur(chevalet1);
         j2 = new Joueur(chevalet2);
         arbitre = new Arbitre();
-        sac.remplirJeuFrançais();
+        sac.remplirJeuFrancais();
         plateau = new Plateau();
     }
 
@@ -67,5 +69,27 @@ public class ScrabbleTest {
         assertNotNull(plateau);
         System.out.println(plateau.toString());
     }
-
+    
+    @Test 
+    public void testPlacerLettre() {
+    	arbitre.remplirChevalet(sac, j1);
+    	try {
+			j1.placerLettre(j1.retourneChevalet().retourneJetons().get(1),7,7,plateau);
+		} catch (HorsPlateauException e) {
+			ScrabbleApplicationConsole.message("Erreur d'index");
+		}
+    	assertFalse(plateau.estVide());
+    }
+    @Test
+    public void testPlacerMot() {
+    	arbitre.remplirChevalet(sac, j2);
+    	j2.placerMot(plateau);
+    	assertFalse(plateau.estVide());
+    }
+    
+    @Test 
+    public void jouerUnePartie() {
+    	arbitre.remplirChevalet(sac, j2);
+    	arbitre.JouerUnePartie(j2,sac,plateau);
+    }
 }
